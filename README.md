@@ -1,36 +1,35 @@
 # sr0wx
-## About
+## About & History
 Every automatic station's callsign in Poland (SP) is prefixed by "SR".
 This software is intended to read aloud weather informations (mainly).
-That's why we (or I) called it SR0WX.
+That's why Michał Sadowski (SQ6JNX) initially called it SR0WX.
 
-Extensions (mentioned above) are called ``modules`` (or ``languages``).
+Extensions are called ``plugins`` (or ``languages``).
 Main part of SR0WX is called ``core``.
 
-SR0WX consists quite a lot of independent files so I (SQ6JNX) suggest
-reading other manuals (mainly configuration- and internationalization
-manual) in the same time as reading this one. Really.
+This software was initially created by Dawid SQ6EMM and Michał SQ6JNX.
+Intial instalation was startre in Feb 2009 at SQ6EMM QTH, next station was 
+started as SP6YRE and the idea was spread across Poland.
 
-## History
+Michał SQ6JNX supported the project to 2016. In the 2019 Paweł SQ9ATK forked it
+and keep the support till 2023, when main activity was continued by the hams from
+SP9MOA.
 
 ## Installation
 ### Environment
-    This software requires Python 3.11 and following dependencies:
-    sudo apt-get install git python-pygame python-tz python-imaging python-serial python-six curl php7.0 php7.0-curl php7.0-xml ffmpeg
+This software requires Python 3.11 and following dependencies:
+``sudo apt-get install git python-pygame python-tz python-imaging python-serial python-six curl php7.0 php7.0-curl php7.0-xml ffmpeg``
+Ubuntu and Debian distros are recommended.
 
 ### System config
-sudo gpasswd --add ${USER} dialout
-sudo gpasswd --add ${USER} audio 
+In most of the systems the following persmissions are usually needed to execute the script:
+``sudo gpasswd --add ${USER} dialout
+sudo gpasswd --add ${USER} audio``
 
 ### Cron instalation
+``crontab -e``
 
-## Configuration
+## Transimitting
 Configuration is handled within config.py file, you shall not modify anything out of that file.
 
-### Sample generation
-GENEROWANIE SAMPLI
-Będąc w katalogu audio_generator:
-  php index.php
-
-Generowane są sample z tablicy $słownik z pliku slownik.php.
-Pozostałe tablice to tylko przechowalnia fraz go wygenerowania.
+# License
