@@ -4,10 +4,9 @@ import urllib.error
 import logging
 from datetime import datetime
 import json as JSON
+from src import plugin_scaffold
 
-from sr0wx_module import SR0WXModule
-
-class OpenWeatherModule(SR0WXModule):
+class OpenWeather(plugin_scaffold.SR0WXModule):
     """Klasa pobierająca dane o promieniowaniu"""
 
     def __init__(self, language, api_key, lat, lon, service_url):

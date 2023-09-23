@@ -19,7 +19,7 @@ from six import u
 import datetime
 from functools import wraps
 
-import pyliczba
+import src.lib.pyliczba as pyliczba
 
 def rmv_pl_chars(string):
     return ''.join([i if ord(i) < 128 else '_' for i in string]).lower()
