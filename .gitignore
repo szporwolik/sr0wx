@@ -5,5 +5,4 @@ propagacja.png
 vhf_map.png
 sr0wx.log
 
-audio_generator/ogg/*
-audio_generator/mpg/*
+cache/*

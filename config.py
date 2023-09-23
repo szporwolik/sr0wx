@@ -23,9 +23,9 @@ log_handlers = [{
 lang = "pl"
 pygame_bug = 0
 
-# -------------
+# ===============
 # General Config
-# ------------
+# ===============
 
 ctcss_tone = 88.5               # Transmit CTCSS Tone, put number or 0 to disable
 
@@ -34,9 +34,9 @@ serial_baud_rate = 9600         # Serial port baud rate
 serial_signal = 'DTR'           # PTT serial port signal to be used 'DTR' or 'RTS'
 
 data_sources_error_msg = ['_','zrodlo_danych_niedostepne']
-hello_msg = ['_','Tutaj stacja pogodowa','SR0WX']     # Welcome message - ensure to keep your callsign in
-goodbye_msg = ['_','tutaj Stefan Roman Zero Wanda Ksawery']                     # Closing message - ensure to keep your callsign in
-read_sources_msg = False
+hello_msg = ['Tutaj stacja pogodowa SR0WX']     # Welcome message - ensure to keep your callsign in
+goodbye_msg = ['Tutaj Stefan Roman Zero Wanda Ksawery']                     # Closing message - ensure to keep your callsign in
+read_sources_msg = True
 
 # -------------
 # Module - activity_map
@@ -80,6 +80,21 @@ calendarsq9atk = CalendarSq9atk(
 
 from openweather_sq9atk import OpenWeatherSq9atk
 openweathersq9atk = OpenWeatherSq9atk(
+    language = pl_google,
+    api_key = 'ee78911a0fb560b58144230f46e0d4b2',
+    lat = 50,
+    lon = 20,
+    service_url = 'http://api.openweathermap.org/data/2.5/'
+)
+
+# ---------------
+# Module - openweather_sp9spm
+# ---------------
+# Weather module basing on openweathermap service
+# Visit https://openweathermap.org/api to get the API key, all you need is to register
+
+from mod_openweather import OpenWeatherModule
+openweather = OpenWeatherModule(
     language = pl_google,
     api_key = 'ee78911a0fb560b58144230f46e0d4b2',
     lat = 50,
@@ -182,14 +197,17 @@ geomagneticsq9atk = GeoMagneticSq9atk(
     service_url="https://www.gismeteo.pl/weather-krakow-3212/gm/",  # Example -> Kraków
 )
 
-# WŁĄCZONE MODUŁY
+# ===============
+# Enabled Modules
+# ===============
 modules = [
     #activitymap,            # marker na mapie wx.ostol.pl
     #openweathersq9atk,      # prognoza pogody
+    openweather,             # prognoza pogody
     #imgwpodestsq9atk,       # wodowskazy
     #airpollutionsq9atk,     # zanieczyszczenia powietrza z GIOŚ
     #airlysq9atk,            # zanieczyszczenia powietrza z Airly
-    #vhftroposq9atk,        # vhf tropo propagacja
+    #vhftroposq9atk,         # vhf tropo propagacja
     #propagationsq9atk,      # propagacja KF
     #geomagneticsq9atk,      # zaburzenia geomagnetyczne
     #radioactivesq9atk,      # promieniowanie jonizujące

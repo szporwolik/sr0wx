@@ -98,7 +98,7 @@ async def SoundSampleGenerate(text,lang):
 #
 # All datas returned by SR0WX modules will be stored in ``data`` variable.
 
-message = " "
+message = ""
 
 # Information about which modules are to be executed is written in SR0WX
 # config file. Program starts every single of them and appends it's return
@@ -142,7 +142,7 @@ except urllib.error.HTTPError as e:
     logger.info(COLOR_FAIL + "No internet connection" + COLOR_ENDC + "\n")
 
 #lang = my_import('.'.join((config.lang, config.lang)))
-#sources = [lang.source, ]
+sources = []
 
 for module in modules:
     try:
@@ -151,7 +151,7 @@ for module in modules:
         module_message = module_data.get("message", "")
         module_source = module_data.get("source", "")
 
-        message = " ".join((message, module_message))
+        message = "".join((message, module_message))
         if module_message != "" and module_source != "":
             sources.append(module_data['source'])
     except:
@@ -160,7 +160,8 @@ for module in modules:
 # When all the modules finished its' work it's time to ``.split()`` returned
 # data. Every element of returned list is actually a filename of a sample.
 
-message = config.hello_msg + message.split()
+message = config.hello_msg + message.split(sep=".")
+
 if hasattr(config, 'read_sources_msg'):
     if config.read_sources_msg:
         if len(sources) > 1:
@@ -183,12 +184,13 @@ pygame.mixer.init(16000, -16, 2, 1024)
 playlist = []
 
 for el in message:
-    asyncio.get_event_loop().run_until_complete(SoundSampleGenerate(el, config.lang))
+    if el != '' and el != ' ':
+        asyncio.get_event_loop().run_until_complete(SoundSampleGenerate(el, config.lang))
     
-    if "upper" in dir(el):
-        playlist.append(el)
-    else:
-        playlist.append("[sndarray]")
+        if "upper" in dir(el):
+            playlist.append(el)
+        else:
+            playlist.append("[sndarray]")
 
 if hasattr(config, 'ctcss_tone'):
     volume = 25000
@@ -202,16 +204,17 @@ logger.info("Playing sound samples")
 
 sound_samples = {}
 for el in message:
-    if "upper" in dir(el):
-        if el[0:7] == 'file://':
-            sound_samples[el] = pygame.mixer.Sound(el[7:])
+    if el != '' and el != ' ':
+        if "upper" in dir(el):
+            if el[0:7] == 'file://':
+                sound_samples[el] = pygame.mixer.Sound(el[7:])
 
-        if el != "_" and el not in sound_samples:
-            if not os.path.isfile('cache' + "/" + SoundSampleGetFilename(el,config.lang)):
-                logger.warning(COLOR_FAIL + "Couldn't find %s" % ('cache' + "/" + SoundSampleGetFilename(el,config.lang) + COLOR_ENDC))
-                sound_samples[el] = pygame.mixer.Sound('sounds' + "/beep.ogg")
-            else:
-                sound_samples[el] = pygame.mixer.Sound('cache' + "/" + SoundSampleGetFilename(el,config.lang))
+            if el != "_" and el not in sound_samples:
+                if not os.path.isfile('cache' + "/" + SoundSampleGetFilename(el,config.lang)):
+                    logger.warning(COLOR_FAIL + "Couldn't find %s" % ('cache' + "/" + SoundSampleGetFilename(el,config.lang) + COLOR_ENDC))
+                    sound_samples[el] = pygame.mixer.Sound('sounds' + "/beep.ogg")
+                else:
+                    sound_samples[el] = pygame.mixer.Sound('cache' + "/" + SoundSampleGetFilename(el,config.lang))
 
 
 # Program should be able to "press PTT" via RSS232. See ``config`` for

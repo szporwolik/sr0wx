@@ -45,7 +45,7 @@ def remove_accents(function):
     return wrapper
 
 def _(text):
-    return text.replace(' ', '_')
+    return text
 
 
 class SR0WXLanguage(object):
@@ -57,8 +57,6 @@ class SR0WXLanguage(object):
 class PLGoogle(SR0WXLanguage):
     def __init__(self):
         pass
-
-    @remove_accents
     def read_number(self, value, units=None, isFraction=None):
         """Converts numbers to text."""
         if units is None:
@@ -80,28 +78,23 @@ class PLGoogle(SR0WXLanguage):
             retval = " ".join(("minus", retval))
         return retval
 
-    @remove_accents
     def read_pressure(self, value):
         hPa = ["hektopaskal", "hektopaskale", "hektopaskali"]
         return self.read_number(value, hPa)
      
-    @remove_accents
     def read_distance(self, value):
         hPa = ["kilometr", "kilometry", "kilometrow"]
         return self.read_number(value, hPa)
      
 
-    @remove_accents
     def read_percent(self, value):
         percent = ["procent", "procent", "procent"]
         return self.read_number(value, percent)
 
-    @remove_accents
     def read_temperature(self, value):
-        C = [_(u("stopień Celsjusza")), _("stopnie Celsjusza"), _("stopni Celsjusza")]
+        C = [_(u("stopień celsjusza")), _("stopnie celsjusza"), _("stopni celsjusza")]
         return read_number(value, C)
 
-    @remove_accents
     def read_speed(self, no, unit='mps'):
         units = {
             'mps': [
@@ -114,13 +107,10 @@ class PLGoogle(SR0WXLanguage):
         return read_number(no, units[unit])
 
     
-    @remove_accents
     def read_degrees(self, value):
         deg = [u("stopień"), u("stopnie"), u("stopni")]
         return read_number(value, deg)
 
-    
-    @remove_accents
     def read_micrograms(self, value):
         deg = [
                 u("mikrogram na_metr_szes_cienny"),
@@ -129,7 +119,6 @@ class PLGoogle(SR0WXLanguage):
             ]
         return read_number(value, deg)
 
-    @remove_accents
     def read_decimal(self, value):
         deg1000 = [
                 u("tysie_czna"),
@@ -156,7 +145,6 @@ class PLGoogle(SR0WXLanguage):
         else:
             return read_number(value, deg1000, True)
     
-    @remove_accents
     def read_direction(self, value, short=False):
         directions = {
             "N": (u("północno"),   u("północny")),
@@ -170,7 +158,6 @@ class PLGoogle(SR0WXLanguage):
                          for i, d in enumerate(value, -len(value)+1)])
 
 
-    @remove_accents
     def read_datetime(self, value, out_fmt, in_fmt=None):
 
         if type(value) != datetime.datetime and in_fmt is not None:
@@ -233,7 +220,6 @@ class PLGoogle(SR0WXLanguage):
                 retval.append(word)
         return ' '.join((w for w in retval if w != ''))
 
-    @remove_accents
     def read_callsign(self, value):
         # literowanie polskie wg. "Krótkofalarstwo i radiokomunikacja - poradnik",
         # Łukasz Komsta SQ8QED, Wydawnictwa Komunikacji i Łączności Warszawa, 2001,
