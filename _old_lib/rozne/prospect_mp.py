@@ -18,7 +18,7 @@
 
 import re
 import urllib
-from config import prospect_mp as config
+from src.module_init import prospect_mp as config
 import datetime
 import debug
 import json
@@ -205,7 +205,7 @@ def generuj_json(nie_zapisuj=False):
     return  stany
 
 if __name__ == '__main__':
-    from config import prospect_mp as config
+    from src.module_init import prospect_mp as config
     class DummyDebug:
         def log(self,module,message,buglevel=None):
             pass

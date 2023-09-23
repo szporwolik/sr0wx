@@ -21,7 +21,7 @@ import urllib2
 import json
 import datetime
 import pytz
-from config import world_weather_online as config
+from src.module_init import world_weather_online as config
 
 # TODO: need to find better place for this function
 def wind_direction(dir, short=False):

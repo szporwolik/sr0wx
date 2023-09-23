@@ -19,7 +19,7 @@
 import re
 import urllib
 
-from config import gopr_lawiny as config
+from src.module_init import gopr_lawiny as config
 import datetime
 lang=None
 

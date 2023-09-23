@@ -44,7 +44,7 @@
 # "comes into" debug, not in the end. debug should be count only on messages shown
 # on screen, not written into the log or ignored.
 
-from config import debug as config
+from src.module_init import debug as config
 import datetime, os
 
 config.baseURI = "127.0.0.1/"

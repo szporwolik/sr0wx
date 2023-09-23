@@ -19,7 +19,7 @@
 fake_gettext = lambda(s): s
 _ = fake_gettext
 
-from config import y_weather as config
+from src.module_init import y_weather as config
 
 # For debugging purposes:
 

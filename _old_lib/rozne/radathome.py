@@ -18,7 +18,7 @@
 
 import urllib
 import datetime
-from config import radAtHome as config
+from src.module_init import radAtHome as config
 import datetime
 import csv
 import debug

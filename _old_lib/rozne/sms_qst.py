@@ -23,7 +23,7 @@
 import sqlite3
 import gammu
 import subprocess
-from config import sms_qst as config
+from src.module_init import sms_qst as config
 import re
 import os
 import datetime

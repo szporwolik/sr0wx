@@ -19,7 +19,7 @@
 import re
 import urllib
 
-from config import hscr_laviny as config
+from src.module_init import hscr_laviny as config
 import datetime
 lang=None
 

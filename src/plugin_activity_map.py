@@ -82,7 +82,7 @@ Parameters:
             response = page.read()
 
             if response == b'OK':
-                self.__logger.info("::: Data was send, confirmation recived\n")
+                self.__logger.info("::: Data was send, confirmation received\n")
             else:
                 log = "Non-OK response from %s, (%s)"
                 self.__logger.exception("Couldn't close serial port")

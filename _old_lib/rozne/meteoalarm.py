@@ -19,7 +19,7 @@
 import re
 import urllib
 
-from config import meteoalarm as config
+from src.module_init import meteoalarm as config
 lang=None
 
 def downloadFile(url):

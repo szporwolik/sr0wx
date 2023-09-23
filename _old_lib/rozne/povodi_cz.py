@@ -296,7 +296,7 @@ if __name__ == '__main__':
     # for using such a moloch for barely two options?
     
     if len(sys.argv)==2 and sys.argv[1]=='dict':
-        from config import povodi_cz as config
+        from src.module_init import povodi_cz as config
         generate_dictionary()
     elif len(sys.argv)==2 and sys.argv[1]=='conf':
         generate_config()
@@ -305,4 +305,4 @@ if __name__ == '__main__':
     #else:
     #    #show_help()
 else:
-    from config import povodi_cz as config
+    from src.module_init import povodi_cz as config

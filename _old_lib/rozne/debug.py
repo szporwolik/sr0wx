@@ -22,7 +22,7 @@
 # Special module for showing/storing debug informations. Log is saved in
 # debug.path (stored in config) as yy-mm-dd.log. 
 
-from config import debug as config
+from src.module_init import debug as config
 import datetime, os
 
 

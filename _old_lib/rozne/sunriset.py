@@ -15,7 +15,7 @@
 #   limitations under the License.
 #
 
-from config import sunriset as config
+from src.module_init import sunriset as config
 import pytz, datetime
 import lib.Sun
 lang=None

@@ -19,7 +19,7 @@
 fake_gettext = lambda(s): s
 _ = fake_gettext
 
-from config import wview as config
+from src.module_init import wview as config
 
 # For debugging purposes:
 

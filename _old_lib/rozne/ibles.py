@@ -20,7 +20,7 @@ import urllib
 import pygame
 import datetime
 import re
-from config import ibles  as config
+from src.module_init import ibles  as config
 
 lang=None
 

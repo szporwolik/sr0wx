@@ -280,4 +280,4 @@ download_list = [ """
         show_help()
 else:
     import debug
-    from config import imgw_podest as config
+    from src.module_init import imgw_podest as config

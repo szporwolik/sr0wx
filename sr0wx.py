@@ -15,39 +15,9 @@ import urllib.request
 import urllib.error
 import asyncio
 from io import BytesIO
-from src import module_soundsamples
+from src import module_soundsamples, module_init
+import config
 
-COLOR_HEADER = '\033[95m'
-COLOR_OKBLUE = '\033[94m'
-COLOR_OKGREEN = '\033[92m'
-COLOR_WARNING = '\033[93m'
-COLOR_FAIL = '\033[91m'
-COLOR_BOLD = '\033[1m'
-COLOR_UNDERLINE = '\033[4m'
-COLOR_ENDC = '\033[0m'
-
-LICENSE = COLOR_OKBLUE + """                                      
-Copyright 2009-2014 Michal Sadowski (sq6jnx at hamradio dot pl)
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
------------------------------------------------------------
-
-You can find full list of contributors on:
-- github.com/sq6jnx/sr0wx.py
-- github.com/sq9atk/sr0wx
-
-""" + COLOR_ENDC
 
 logger = None
 
@@ -92,7 +62,7 @@ message = ""
 #
 # Modules may be also given in commandline, separated by a comma.
 
-config = None
+module_init.config = None
 try:
     opts, args = getopt.getopt(sys.argv[1:], "c:", ["config="])
 except getopt.GetoptError:
@@ -101,35 +71,35 @@ for opt, arg in opts:
     if opt in ("-c", "--config"):
         if arg[-3:] == '.py':
             arg = arg[:-3]
-        config = __import__(arg)
+        src.config = __import__(arg)
 
-if config is None:
-    import config
+if module_init.config is None:
+    import src.module_init as module_init
 
-logger = setup_logging(config)
+logger = setup_logging(module_init)
 
-logger.info(COLOR_WARNING + "sr0wx.py has started it's execution" + COLOR_ENDC)
-logger.info(LICENSE)
+logger.info(module_init.COLOR_WARNING + "sr0wx.py has started it's execution" + module_init.COLOR_ENDC)
+logger.info(module_init.LICENSE)
 
 
 if len(args) > 0:
     modules = args[0].split(",")
 else:
-    modules = config.modules
+    modules = module_init.modules
 
 try:
     dane = urllib.request.urlopen('http://google.pl')
 except urllib.error.HTTPError as e:
     modules = []
-    message += " ".join(config.data_sources_error_msg)
-    logger.info(COLOR_FAIL + "No internet connection" + COLOR_ENDC + "\n")
+    message += " ".join(module_init.data_sources_error_msg)
+    logger.info(module_init.COLOR_FAIL + "No internet connection" + module_init.COLOR_ENDC + "\n")
 
 #lang = my_import('.'.join((config.lang, config.lang)))
 sources = []
 
 for module in modules:
     try:
-        logger.info(COLOR_OKGREEN + "starting %s..." + COLOR_ENDC, module)
+        logger.info(module_init.COLOR_OKGREEN + "starting %s..." + module_init.COLOR_ENDC, module)
         module_data = module.get_data()
         module_message = module_data.get("message", "")
         module_source = module_data.get("source", "")
@@ -138,20 +108,20 @@ for module in modules:
         if module_message != "" and module_source != "":
             sources.append(module_data['source'])
     except:
-        logger.exception(COLOR_FAIL + "Exception when running %s"+ COLOR_ENDC, module)
+        logger.exception(module_init.COLOR_FAIL + "Exception when running %s"+ module_init.COLOR_ENDC, module)
 
 # When all the modules finished its' work it's time to ``.split()`` returned
 # data. Every element of returned list is actually a filename of a sample.
 
-message = config.hello_msg + message.split(sep=".")
+message = [config.hello_msg] + message.split(sep=".")
 
-if hasattr(config, 'read_sources_msg'):
-    if config.read_sources_msg:
+if hasattr(module_init, 'read_sources_msg'):
+    if module_init.read_sources_msg:
         if len(sources) > 1:
             message += sources
 else:
     message += sources
-message += config.goodbye_msg
+message += [config.goodbye_msg]
 
 # It's time to init ``pygame``'s mixer (and ``pygame``). Possibly defined
 # sound quality is far-too-good (44kHz 16bit, stereo), so you can change it.
@@ -166,28 +136,28 @@ pygame.mixer.init(16000, -16, 2, 1024)
 
 playlist = []
 
-logger.info(COLOR_OKGREEN + "Clearing cache" + COLOR_ENDC)
+logger.info(module_init.COLOR_OKGREEN + "Clearing cache" + module_init.COLOR_ENDC)
 module_soundsamples.SoundSampleClearCache(logger,os.path.join('cache'),config.cache_max_age)
 
-logger.info(COLOR_OKGREEN + "Preparing sound samples" + COLOR_ENDC)
+logger.info(module_init.COLOR_OKGREEN + "Preparing sound samples" + module_init.COLOR_ENDC)
 for el in message:
     if el != '' and el != ' ':
-        asyncio.get_event_loop().run_until_complete(module_soundsamples.SoundSampleGenerate(logger,el, config.lang))
+        asyncio.get_event_loop().run_until_complete(module_soundsamples.SoundSampleGenerate(logger,el, module_init.lang))
     
         if "upper" in dir(el):
             playlist.append(el)
         else:
             playlist.append("[sndarray]")
 
-if hasattr(config, 'ctcss_tone'):
+if hasattr(module_init, 'ctcss_tone'):
     volume = 25000
-    arr = numpy.array([volume * numpy.sin(2.0 * numpy.pi * round(config.ctcss_tone) * x / 16000) for x in range(0, 16000)]).astype(numpy.int16)
+    arr = numpy.array([volume * numpy.sin(2.0 * numpy.pi * round(module_init.ctcss_tone) * x / 16000) for x in range(0, 16000)]).astype(numpy.int16)
     arr2 = numpy.c_[arr,arr]
     #ctcss = pygame.sndarray.make_sound(arr2)
-    logger.info(COLOR_WARNING + "CTCSS tone %sHz" + COLOR_ENDC, "%.1f" % config.ctcss_tone)
+    logger.info(module_init.COLOR_WARNING + "CTCSS tone %sHz" + module_init.COLOR_ENDC, "%.1f" % module_init.ctcss_tone)
     #ctcss.play(-1)
 
-logger.info(COLOR_OKGREEN + "Preloading sound samples" + COLOR_ENDC)
+logger.info(module_init.COLOR_OKGREEN + "Preloading sound samples" + module_init.COLOR_ENDC)
 
 sound_samples = {}
 for el in message:
@@ -197,11 +167,11 @@ for el in message:
                 sound_samples[el] = pygame.mixer.Sound(el[7:])
 
             if el != "_" and el not in sound_samples:
-                if not os.path.isfile('cache' + "/" + module_soundsamples.SoundSampleGetFilename(el,config.lang)):
-                    logger.warning(COLOR_FAIL + "Couldn't find %s" % ('cache' + "/" + module_soundsamples.SoundSampleGetFilename(el,config.lang) + COLOR_ENDC))
+                if not os.path.isfile('cache' + "/" + module_soundsamples.SoundSampleGetFilename(el,module_init.lang)):
+                    logger.warning(module_init.COLOR_FAIL + "Couldn't find %s" % ('cache' + "/" + module_soundsamples.SoundSampleGetFilename(el,module_init.lang) + module_init.COLOR_ENDC))
                     sound_samples[el] = pygame.mixer.Sound('sounds' + "/beep.ogg")
                 else:
-                    sound_samples[el] = pygame.mixer.Sound('cache' + "/" + module_soundsamples.SoundSampleGetFilename(el,config.lang))
+                    sound_samples[el] = pygame.mixer.Sound('cache' + "/" + module_soundsamples.SoundSampleGetFilename(el,module_init.lang))
 
 
 # Program should be able to "press PTT" via RSS232. See ``config`` for
@@ -213,15 +183,15 @@ if config.serial_port is not None:
     try:
         ser = serial.Serial(config.serial_port, config.serial_baud_rate)
         if config.serial_signal == 'DTR':
-            logger.info(COLOR_OKGREEN + "DTR/PTT set to ON\n" + COLOR_ENDC)
+            logger.info(module_init.COLOR_OKGREEN + "DTR/PTT set to ON\n" + module_init.COLOR_ENDC)
             ser.setDTR(1)
             ser.setRTS(0)
         else:
-            logger.info(COLOR_OKGREEN + "RTS/PTT set to ON\n" + COLOR_ENDC)
+            logger.info(module_init.COLOR_OKGREEN + "RTS/PTT set to ON\n" + module_init.COLOR_ENDC)
             ser.setDTR(0)
             ser.setRTS(1)
     except:
-        log = COLOR_FAIL + "Failed to open serial port %s@%i" + COLOR_ENDC
+        log = module_init.COLOR_FAIL + "Failed to open serial port %s@%i" + module_init.COLOR_ENDC
         logger.error(log, config.serial_port, config.serial_baud_rate)
 
 
@@ -236,7 +206,7 @@ pygame.time.delay(1000)
 # Unfortunately, there may be some pauses between samples so "reading
 # aloud" will be less natural.
 
-logger.info(COLOR_OKGREEN + "Playing and transmitting" + COLOR_ENDC)
+logger.info(module_init.COLOR_OKGREEN + "Playing and transmitting" + module_init.COLOR_ENDC)
 for el in message:
     if el == "_":
         pygame.time.wait(500)
@@ -249,7 +219,7 @@ for el in message:
 
         elif "upper" not in dir(el):
             sound = pygame.sndarray.make_sound(el)
-            if config.pygame_bug == 1:
+            if module_init.pygame_bug == 1:
                 sound = pygame.sndarray.make_sound(pygame.sndarray.array(sound)[:len(pygame.sndarray.array(sound))/2])
             voice_channel = sound.play()
         while voice_channel.get_busy():
@@ -262,7 +232,7 @@ for el in message:
 # other stuff) before closing the ``pygame`` mixer and display some debug
 # informations.
 
-logger.info(COLOR_WARNING + "Finishing..." + COLOR_ENDC)
+logger.info(module_init.COLOR_WARNING + "Finishing..." + module_init.COLOR_ENDC)
 
 pygame.time.delay(1000)
 
@@ -271,9 +241,9 @@ try:
     if config.serial_port is not None:
         if ser != None:
             ser.close()
-            logger.info(COLOR_OKGREEN + "RTS/PTT set to OFF\n" + COLOR_ENDC)
+            logger.info(module_init.COLOR_OKGREEN + "RTS/PTT set to OFF\n" + module_init.COLOR_ENDC)
 except NameError:
-    logger.exception(COLOR_FAIL + "Couldn't close serial port" + COLOR_ENDC)
+    logger.exception(module_init.COLOR_FAIL + "Couldn't close serial port" + module_init.COLOR_ENDC)
 
-logger.info(COLOR_WARNING + "sr0wx.py has finished execution. Bye!" + COLOR_ENDC)
+logger.info(module_init.COLOR_WARNING + "sr0wx.py has finished execution. Bye!" + module_init.COLOR_ENDC)
 
