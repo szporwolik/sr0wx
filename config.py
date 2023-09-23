@@ -33,6 +33,8 @@ serial_port = '/dev/ttyS0'      # Serial port to be used for PTTY config, set to
 serial_baud_rate = 9600         # Serial port baud rate
 serial_signal = 'DTR'           # PTT serial port signal to be used 'DTR' or 'RTS'
 
+cache_max_age = 1               # Maximum number of hours after which sound sample shall be regenerated
+
 data_sources_error_msg = ['_','zrodlo_danych_niedostepne']
 hello_msg = ['Tutaj stacja pogodowa SR0WX']     # Welcome message - ensure to keep your callsign in
 goodbye_msg = ['Tutaj Stefan Roman Zero Wanda Ksawery']                     # Closing message - ensure to keep your callsign in

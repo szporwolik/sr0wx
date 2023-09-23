@@ -15,8 +15,7 @@ import urllib.request
 import urllib.error
 import asyncio
 from io import BytesIO
-from aiogtts import aiogTTS
-import re
+from src import module_soundsamples
 
 COLOR_HEADER = '\033[95m'
 COLOR_OKBLUE = '\033[94m'
@@ -27,8 +26,7 @@ COLOR_BOLD = '\033[1m'
 COLOR_UNDERLINE = '\033[4m'
 COLOR_ENDC = '\033[0m'
 
-LICENSE = COLOR_OKBLUE + """
-
+LICENSE = COLOR_OKBLUE + """                                      
 Copyright 2009-2014 Michal Sadowski (sq6jnx at hamradio dot pl)
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -49,9 +47,9 @@ You can find full list of contributors on:
 - github.com/sq6jnx/sr0wx.py
 - github.com/sq9atk/sr0wx
 
-
 """ + COLOR_ENDC
 
+logger = None
 
 # Logging configuration
 def setup_logging(config):
@@ -79,21 +77,6 @@ def my_import(name):
     for comp in components[1:]:
         mod = getattr(mod, comp)
     return mod
-
-def SoundSampleGetFilename(text,lang):
-    return lang+ '_' + re.sub(r'\W+', '', text) + ".mp3"
-    
-aiogtts=None
-async def SoundSampleGenerate(text,lang):
-    if text == "_":
-        return None
-    
-    if not os.path.isfile(os.path.join('cache', SoundSampleGetFilename(text,lang))):
-        logger.info("Generating sound sample ["+lang+"]: " + text )
-        aiogtts = aiogTTS()
-        await aiogtts.save(text,os.path.join('cache', SoundSampleGetFilename(text,lang) ), lang)
-    else:
-        logger.info("Skipping sound sample ["+lang+"]: " + text )
         
 #
 # All datas returned by SR0WX modules will be stored in ``data`` variable.
@@ -183,9 +166,13 @@ pygame.mixer.init(16000, -16, 2, 1024)
 
 playlist = []
 
+logger.info(COLOR_OKGREEN + "Clearing cache" + COLOR_ENDC)
+module_soundsamples.SoundSampleClearCache(logger,os.path.join('cache'),config.cache_max_age)
+
+logger.info(COLOR_OKGREEN + "Preparing sound samples" + COLOR_ENDC)
 for el in message:
     if el != '' and el != ' ':
-        asyncio.get_event_loop().run_until_complete(SoundSampleGenerate(el, config.lang))
+        asyncio.get_event_loop().run_until_complete(module_soundsamples.SoundSampleGenerate(logger,el, config.lang))
     
         if "upper" in dir(el):
             playlist.append(el)
@@ -197,10 +184,10 @@ if hasattr(config, 'ctcss_tone'):
     arr = numpy.array([volume * numpy.sin(2.0 * numpy.pi * round(config.ctcss_tone) * x / 16000) for x in range(0, 16000)]).astype(numpy.int16)
     arr2 = numpy.c_[arr,arr]
     #ctcss = pygame.sndarray.make_sound(arr2)
-    logger.info(COLOR_WARNING + "CTCSS tone %sHz" + COLOR_ENDC + "\n", "%.1f" % config.ctcss_tone)
+    logger.info(COLOR_WARNING + "CTCSS tone %sHz" + COLOR_ENDC, "%.1f" % config.ctcss_tone)
     #ctcss.play(-1)
 
-logger.info("Playing sound samples")
+logger.info(COLOR_OKGREEN + "Preloading sound samples" + COLOR_ENDC)
 
 sound_samples = {}
 for el in message:
@@ -210,11 +197,11 @@ for el in message:
                 sound_samples[el] = pygame.mixer.Sound(el[7:])
 
             if el != "_" and el not in sound_samples:
-                if not os.path.isfile('cache' + "/" + SoundSampleGetFilename(el,config.lang)):
-                    logger.warning(COLOR_FAIL + "Couldn't find %s" % ('cache' + "/" + SoundSampleGetFilename(el,config.lang) + COLOR_ENDC))
+                if not os.path.isfile('cache' + "/" + module_soundsamples.SoundSampleGetFilename(el,config.lang)):
+                    logger.warning(COLOR_FAIL + "Couldn't find %s" % ('cache' + "/" + module_soundsamples.SoundSampleGetFilename(el,config.lang) + COLOR_ENDC))
                     sound_samples[el] = pygame.mixer.Sound('sounds' + "/beep.ogg")
                 else:
-                    sound_samples[el] = pygame.mixer.Sound('cache' + "/" + SoundSampleGetFilename(el,config.lang))
+                    sound_samples[el] = pygame.mixer.Sound('cache' + "/" + module_soundsamples.SoundSampleGetFilename(el,config.lang))
 
 
 # Program should be able to "press PTT" via RSS232. See ``config`` for
@@ -234,7 +221,7 @@ if config.serial_port is not None:
             ser.setDTR(0)
             ser.setRTS(1)
     except:
-        log = COLOR_FAIL + "Failed to open serial port %s@%i\n" + COLOR_ENDC
+        log = COLOR_FAIL + "Failed to open serial port %s@%i" + COLOR_ENDC
         logger.error(log, config.serial_port, config.serial_baud_rate)
 
 
@@ -249,6 +236,7 @@ pygame.time.delay(1000)
 # Unfortunately, there may be some pauses between samples so "reading
 # aloud" will be less natural.
 
+logger.info(COLOR_OKGREEN + "Playing and transmitting" + COLOR_ENDC)
 for el in message:
     if el == "_":
         pygame.time.wait(500)
@@ -274,7 +262,7 @@ for el in message:
 # other stuff) before closing the ``pygame`` mixer and display some debug
 # informations.
 
-logger.info(COLOR_WARNING + "Finishing...\n" + COLOR_ENDC)
+logger.info(COLOR_WARNING + "Finishing..." + COLOR_ENDC)
 
 pygame.time.delay(1000)
 
