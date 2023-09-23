@@ -13,6 +13,10 @@ import logging, logging.handlers
 import numpy
 import urllib.request
 import urllib.error
+import asyncio
+from io import BytesIO
+from aiogtts import aiogTTS
+import re
 
 COLOR_HEADER = '\033[95m'
 COLOR_OKBLUE = '\033[94m'
@@ -76,6 +80,21 @@ def my_import(name):
         mod = getattr(mod, comp)
     return mod
 
+def SoundSampleGetFilename(text,lang):
+    return lang+ '_' + re.sub(r'\W+', '', text) + ".mp3"
+    
+aiogtts=None
+async def SoundSampleGenerate(text,lang):
+    if text == "_":
+        return None
+    
+    if not os.path.isfile(os.path.join('cache', SoundSampleGetFilename(text,lang))):
+        logger.info("Generating sound sample ["+lang+"]: " + text )
+        aiogtts = aiogTTS()
+        await aiogtts.save(text,os.path.join('cache', SoundSampleGetFilename(text,lang) ), lang)
+    else:
+        logger.info("Skipping sound sample ["+lang+"]: " + text )
+        
 #
 # All datas returned by SR0WX modules will be stored in ``data`` variable.
 
@@ -106,7 +125,7 @@ if config is None:
 
 logger = setup_logging(config)
 
-logger.info(COLOR_WARNING + "sr0wx.py started" + COLOR_ENDC)
+logger.info(COLOR_WARNING + "sr0wx.py has started it's execution" + COLOR_ENDC)
 logger.info(LICENSE)
 
 
@@ -122,8 +141,8 @@ except urllib.error.HTTPError as e:
     message += " ".join(config.data_sources_error_msg)
     logger.info(COLOR_FAIL + "No internet connection" + COLOR_ENDC + "\n")
 
-lang = my_import('.'.join((config.lang, config.lang)))
-sources = [lang.source, ]
+#lang = my_import('.'.join((config.lang, config.lang)))
+#sources = [lang.source, ]
 
 for module in modules:
     try:
@@ -164,6 +183,8 @@ pygame.mixer.init(16000, -16, 2, 1024)
 playlist = []
 
 for el in message:
+    asyncio.get_event_loop().run_until_complete(SoundSampleGenerate(el, config.lang))
+    
     if "upper" in dir(el):
         playlist.append(el)
     else:
@@ -177,9 +198,7 @@ if hasattr(config, 'ctcss_tone'):
     logger.info(COLOR_WARNING + "CTCSS tone %sHz" + COLOR_ENDC + "\n", "%.1f" % config.ctcss_tone)
     #ctcss.play(-1)
 
-logger.info("playlist elements: %s", " ".join(playlist)+"\n")
-logger.info("loading sound samples...")
-logger.info("playing sound samples\n")
+logger.info("Playing sound samples")
 
 sound_samples = {}
 for el in message:
@@ -188,11 +207,11 @@ for el in message:
             sound_samples[el] = pygame.mixer.Sound(el[7:])
 
         if el != "_" and el not in sound_samples:
-            if not os.path.isfile(config.lang + "/" + el + ".ogg"):
-                logger.warn(COLOR_FAIL + "Couldn't find %s" % (config.lang + "/" + el + ".ogg" + COLOR_ENDC))
-                sound_samples[el] = pygame.mixer.Sound(config.lang + "/beep.ogg")
+            if not os.path.isfile('cache' + "/" + SoundSampleGetFilename(el,config.lang)):
+                logger.warning(COLOR_FAIL + "Couldn't find %s" % ('cache' + "/" + SoundSampleGetFilename(el,config.lang) + COLOR_ENDC))
+                sound_samples[el] = pygame.mixer.Sound('sounds' + "/beep.ogg")
             else:
-                sound_samples[el] = pygame.mixer.Sound(config.lang + "/" + el + ".ogg")
+                sound_samples[el] = pygame.mixer.Sound('cache' + "/" + SoundSampleGetFilename(el,config.lang))
 
 
 # Program should be able to "press PTT" via RSS232. See ``config`` for
@@ -252,7 +271,7 @@ for el in message:
 # other stuff) before closing the ``pygame`` mixer and display some debug
 # informations.
 
-logger.info(COLOR_WARNING + "finishing...\n" + COLOR_ENDC)
+logger.info(COLOR_WARNING + "Finishing...\n" + COLOR_ENDC)
 
 pygame.time.delay(1000)
 
@@ -265,5 +284,5 @@ try:
 except NameError:
     logger.exception(COLOR_FAIL + "Couldn't close serial port" + COLOR_ENDC)
 
-logger.info(COLOR_WARNING + "goodbye" + COLOR_ENDC)
+logger.info(COLOR_WARNING + "sr0wx.py has finished execution. Bye!" + COLOR_ENDC)
 
