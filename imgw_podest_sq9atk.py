@@ -16,7 +16,8 @@
 #   limitations under the License.
 #
 
-import urllib2
+import urllib.request
+import urllib.error
 import re
 import json
 import logging

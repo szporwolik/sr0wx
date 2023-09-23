@@ -43,10 +43,8 @@ class PropagationSq9atk(SR0WXModule):
             webFile = urllib.URLopener()
             webFile.retrieve(url, "propagacja.png")
             return Image.open("propagacja.png",'r')
-        except socket.timeout:
-            print "Timed out!"
         except:
-            print "Data download error!"
+            print("Data download error!")
         return
 
     def collectBandConditionsFromImage(self, image, dayTime):

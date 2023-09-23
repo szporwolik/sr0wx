@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import logging, re, subprocess
-import urllib2
+import urllib.request
+import urllib.error
 import time
 from pprint import pprint
 

@@ -1,7 +1,8 @@
 #!/usr/bin/python -tt
 # -*- coding: utf-8 -*-
 
-import urllib2
+import urllib.request
+import urllib.error
 import logging
 from datetime import datetime
 import json as JSON
@@ -86,12 +87,10 @@ class OpenWeatherSq9atk(SR0WXModule):
 
     def downloadFile(self, url):
         try:
-            webFile = urllib2.urlopen(url, None, 30)
-            return webFile.read()
-        except urllib2.URLError, e:
-            print e
-        except socket.timeout:
-            print "Timed out!"
+            page = urllib.request.urlopen(url)
+            return page.read()
+        except urllib.error.HTTPError as e:
+            print(e)
         return ""
 
     def getHour(self):

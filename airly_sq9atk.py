@@ -1,7 +1,8 @@
 #!/usr/bin/python -tt
 # -*- coding: utf-8 -*-
 
-import urllib2
+import urllib.request
+import urllib.error
 import logging
 from datetime import datetime
 import json as JSON
@@ -86,14 +87,11 @@ class AirlySq9atk(SR0WXModule):
         
         
     def getAirlyData(self, url):
-        request = urllib2.Request(url, headers={'Accept': 'application/json', 'apikey': self.__api_key})
         try:
-            webFile = urllib2.urlopen(request, None, 30)
+            webFile = urllib.request.urlopen(url, headers={'Accept': 'application/json', 'apikey': self.__api_key})
             return webFile.read()
-        except urllib2.URLError, e:
-            print e
-        except socket.timeout:
-            print "Timed out!"
+        except urllib.error.HTTPError as e:
+            print(e)
         return ""
 
 

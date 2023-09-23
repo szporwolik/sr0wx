@@ -1,7 +1,8 @@
 #!/usr/bin/python -tt
 # -*- coding: utf-8 -*-
 
-import urllib2
+import urllib.request
+import urllib.error
 import re
 import logging
 import pytz
@@ -23,12 +24,10 @@ class CalendarSq9atk(SR0WXModule):
     def downloadFile(self, url):
         try:
             self.__logger.info("::: Odpytuję adres: " + url)
-            webFile = urllib2.urlopen(url, None, 30)
+            webFile = urllib.request.urlopen(url)
             return webFile.read()
-        except urllib2.URLError, e:
-            print e
-        except socket.timeout:
-            print "Timed out!"
+        except urllib.error.HTTPError as e:
+            print(e)
         return ""
 
     def getSunsetSunrise(self):

@@ -1,7 +1,8 @@
 #!/usr/bin/python -tt
 # -*- coding: utf-8 -*-
 
-import urllib2
+import urllib.request
+import urllib.error
 import logging
 import json
 import socket
@@ -31,12 +32,10 @@ class AirPollutionSq9atk(SR0WXModule):
         self.__logger.info("::: Odpytuję adres: " + url)
         
         try:
-            data = urllib2.urlopen(url, None, 45)
+            data = urllib.request.urlopen(url)
             return json.load(data)
-        except urllib2.URLError, e:
-            print e
-        except socket.timeout:
-            print "Timed out!"
+        except urllib.error.HTTPError as e:
+            print (e)
 
         return {}
 
@@ -119,7 +118,7 @@ class AirPollutionSq9atk(SR0WXModule):
         message = " _ informacja_o_skaz_eniu_powietrza _ "
         message += " stacja_pomiarowa " + self.mbstr2asci(self.getStationName()) + " _ "
         message += valuesMessage
-        print "\n"
+        print("\n")
         return {
             "message": message,
             "source": "powietrze_malopolska_pl",
