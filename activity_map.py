@@ -17,6 +17,7 @@
 #
 
 import base64
+from base64 import urlsafe_b64encode
 import logging
 import json
 
@@ -74,16 +75,13 @@ Parameters:
         }
 
         dump = json.dumps(station_info, separators=(',', ':'))
-        b64data = base64.urlsafe_b64encode(dump)
+        data_bytes = dump.encode("utf-8")
+        b64data = urlsafe_b64encode(data_bytes)
 
-        url = self.__service_url + b64data
-
+        url = self.__service_url + b64data.decode()
         self.__logger.info("::: Odpytuję adres: " + url)
-
-
+        
         try:
-            request = urllib2.Request(url)
-            webFile = urllib2.urlopen(request, None, 5)
             page = urllib.request.urlopen(url)
             response = page.read()
 
@@ -91,7 +89,7 @@ Parameters:
                 self.__logger.info("::: Dane wysłano, status OK\n")
             else:
                 log = "Non-OK response from %s, (%s)"
-                self.__logger.error(log, url, response)
+                self.__logger.error(log, self.__service_url, response)
             return dict()
 
         except urllib.error.HTTPError as e:
