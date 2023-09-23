@@ -138,19 +138,19 @@ class OpenWeather(plugin_scaffold.SR0WXModule):
 
     def get_data(self):
         
-        self.__logger.info("::: Pobieram aktualne dane pogodowe...")
+        self.__logger.info("::: Getting actual weather...")
         
         weather_service_url = self.__service_url + 'weather?lat=' + str(self.__lat) + '&lon='+str(self.__lon) + '&units=metric&appid=' + self.__api_key
         self.__logger.info( weather_service_url )
         weatherJson = JSON.loads( self.downloadFile(weather_service_url) )
 
-        self.__logger.info("::: Pobieram dane prognozy pogody...")
+        self.__logger.info("::: Getting forecast...")
         
         forecast_service_url = self.__service_url + 'forecast?lat=' + str(self.__lat) + '&lon='+str(self.__lon) + '&units=metric&appid=' + self.__api_key
         self.__logger.info( forecast_service_url )
         forecastJsonAll = JSON.loads( self.downloadFile(forecast_service_url) )
 
-        self.__logger.info("::: Przetwarzam dane...")
+        self.__logger.info("::: Processing data...")
 
         message = "".join([ "Aktualna pogoda.", 
                         self.getWeather( weatherJson['weather'] ), \
@@ -166,7 +166,7 @@ class OpenWeather(plugin_scaffold.SR0WXModule):
                         self.getWind( forecastJson['wind'] ), \
                      ])
 
-        self.__logger.info("::: Przetwarzam dane...\n")
+        self.__logger.info("::: Data prepared\n")
                 
         return {
             "message": message,

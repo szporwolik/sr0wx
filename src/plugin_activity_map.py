@@ -24,31 +24,29 @@ import json
 import urllib.request
 import urllib.error
 
-from sr0wx_module import SR0WXModule
+from src import plugin_scaffold
 
 
-class ActivityMap(SR0WXModule):
+class ActivityMap(plugin_scaffold.SR0WXModule):
     """This module does not give any data, it just contacts application to mark
 station on the map.
 
 Parameters:
     - `callsign`: your station callsign
     - `latitude`, `longitude`: geographic position of station
-    - `hour_quarter`: quarter in which station is transmitting (to be
-    deprecated)
     - `above_sea_level`: antenna's height a.s.l.
     - `above_ground_level`: antenna's height a.g.l.
     - `station_range`: station's range in normal conditions, in kilometers
     - `additional_info`: additional information to show on website
     - `service_url`: mapping service url, defaults to SQ9ATK service
     """
-    def __init__(self, callsign, latitude, longitude, hour_quarter,
+    def __init__(self, callsign, latitude, longitude,
                  above_sea_level, above_ground_level, station_range,
                  additional_info="", service_url=""):
         self.__callsign = callsign
         self.__latitude = latitude
         self.__longitude = longitude
-        self.__hour_quarter = hour_quarter
+        self.__hour_quarter = 0
         self.__above_sea_level = above_sea_level
         self.__above_ground_level = above_ground_level
         self.__station_range = station_range
@@ -60,9 +58,7 @@ Parameters:
     def get_data(self):
         """This module does NOT return any data! It is here just to say "hello" to
         map utility!"""
-
-        self.__logger.info("::: Przetwarzam dane...")
-
+        
         station_info = {
             "callsign": self.__callsign,
             "lat": self.__latitude,
@@ -79,16 +75,17 @@ Parameters:
         b64data = urlsafe_b64encode(data_bytes)
 
         url = self.__service_url + b64data.decode()
-        self.__logger.info("::: Odpytuję adres: " + url)
+        self.__logger.info("::: Sending request to " + url)
         
         try:
             page = urllib.request.urlopen(url)
             response = page.read()
 
-            if response == 'OK':
-                self.__logger.info("::: Dane wysłano, status OK\n")
+            if response == b'OK':
+                self.__logger.info("::: Data was send, confirmation recived\n")
             else:
                 log = "Non-OK response from %s, (%s)"
+                self.__logger.exception("Couldn't close serial port")
                 self.__logger.error(log, self.__service_url, response)
             return dict()
 

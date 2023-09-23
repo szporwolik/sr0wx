@@ -44,20 +44,19 @@ read_sources_msg = True
 # Module - activity_map
 # ------------
 # This module sends status messages to https://ostol.pl/, strongly recommended to have it active to track the SR0WX community
-"""
-from activity_map import ActivityMap
-activitymap = ActivityMap(
+
+from src import plugin_activity_map
+plugin_activitymap = plugin_activity_map.ActivityMap(
     service_url="http://wx.ostol.pl/map_requests?base=",
-    callsign="SP9MOA",
+    callsign="SR0WX",
     latitude=54.655245,
     longitude=19.268097,
-    hour_quarter=10,
     above_sea_level=225,
     above_ground_level=20,
     station_range=65,
-    additional_info= "Eksperymentalna stacja pogodowa",
+    additional_info= "Automatic weather station",
 )
-"""
+
 # ===============
 # Global Modules
 # ===============
@@ -203,7 +202,7 @@ geomagneticsq9atk = GeoMagneticSq9atk(
 # Enabled Modules
 # ===============
 modules = [
-    #activitymap,            # marker na mapie wx.ostol.pl
+    #plugin_activitymap,            # marker na mapie wx.ostol.pl
     #openweathersq9atk,      # prognoza pogody
     plugin_openweather,             # prognoza pogody
     #imgwpodestsq9atk,       # wodowskazy
