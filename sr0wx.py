@@ -1,5 +1,18 @@
-#!/usr/bin/python -tt
-# -*- coding: utf-8 -*-
+# ********
+# sr0wx.py
+# ********
+#
+# This is main program file for automatic weather station project;
+# codename SR0WX. Refer README.md for more information and manual.
+
+import getopt
+import os
+import pygame
+import sys
+import logging, logging.handlers
+import numpy
+import urllib.request
+import urllib.error
 
 COLOR_HEADER = '\033[95m'
 COLOR_OKBLUE = '\033[94m'
@@ -28,73 +41,13 @@ limitations under the License.
 
 -----------------------------------------------------------
 
-You can find full list of contributors on github.com/sq6jnx/sr0wx.py
+You can find full list of contributors on:
+- github.com/sq6jnx/sr0wx.py
+- github.com/sq9atk/sr0wx
+
 
 """ + COLOR_ENDC
 
-
-
-
-#
-#
-# ********
-# sr0wx.py
-# ********
-#
-# This is main program file for automatic weather station project;
-# codename SR0WX.
-#
-# (At the moment) SR0WX can read METAR [#]_ weather informations and
-# is able to read them aloud in Polish. SR0WX is fully extensible, so
-# it's easy to make it read any other data in any language (I hope).
-#
-# .. [#] http://en.wikipedia.org/wiki/METAR
-#
-# =====
-# About
-# =====
-#
-# Every automatic station's callsign in Poland (SP) is prefixed by "SR".
-# This software is intended to read aloud weather informations (mainly).
-# That's why we (or I) called it SR0WX.
-#
-# Extensions (mentioned above) are called ``modules`` (or ``languages``).
-# Main part of SR0WX is called ``core``.
-#
-# SR0WX consists quite a lot of independent files so I (SQ6JNX) suggest
-# reading other manuals (mainly configuration- and internationalization
-# manual) in the same time as reading this one. Really.
-#
-# ============
-# Requirements
-# ============
-#
-# SR0WX (core) requires the following packages:
-
-import getopt
-import os
-import pygame
-import sys
-import logging, logging.handlers
-import numpy
-import urllib.request
-import urllib.error
-
-# ``os``, ``sys`` and ``time`` doesn't need further explanation, these are
-# syandard Python packages.
-#
-# ``pygame`` [#]_ is a library helpful for game development, this project
-# uses it for reading (playing) sound samples. ``config`` is just a
-# SR0WX configuration file and it is described separately.
-#
-# ..[#] www.pygame.org
-#
-# =========
-# Let's go!
-# =========
-#
-# For infrmational purposes script says hello and gives local time/date,
-# so it will be possible to find out how long script was running.
 
 # Logging configuration
 def setup_logging(config):
@@ -167,12 +120,7 @@ try:
 except urllib.error.HTTPError as e:
     modules = []
     message += " ".join(config.data_sources_error_msg)
-    logger.info(COLOR_FAIL + "Brak połączenia z internetem" + COLOR_ENDC + "\n")
-except socket.timeout:
-    modules = []
-    message += " ".join(config.data_sources_error_msg)
-    logger.info(COLOR_FAIL + "Brak połączenia z internetem" + COLOR_ENDC + "\n")
-
+    logger.info(COLOR_FAIL + "No internet connection" + COLOR_ENDC + "\n")
 
 lang = my_import('.'.join((config.lang, config.lang)))
 sources = [lang.source, ]
@@ -225,9 +173,9 @@ if hasattr(config, 'ctcss_tone'):
     volume = 25000
     arr = numpy.array([volume * numpy.sin(2.0 * numpy.pi * round(config.ctcss_tone) * x / 16000) for x in range(0, 16000)]).astype(numpy.int16)
     arr2 = numpy.c_[arr,arr]
-    ctcss = pygame.sndarray.make_sound(arr2)
+    #ctcss = pygame.sndarray.make_sound(arr2)
     logger.info(COLOR_WARNING + "CTCSS tone %sHz" + COLOR_ENDC + "\n", "%.1f" % config.ctcss_tone)
-    ctcss.play(-1)
+    #ctcss.play(-1)
 
 logger.info("playlist elements: %s", " ".join(playlist)+"\n")
 logger.info("loading sound samples...")
@@ -247,12 +195,9 @@ for el in message:
                 sound_samples[el] = pygame.mixer.Sound(config.lang + "/" + el + ".ogg")
 
 
-
-
-
 # Program should be able to "press PTT" via RSS232. See ``config`` for
 # details.
-
+ser = None
 if config.serial_port is not None:
     
     import serial
@@ -283,7 +228,6 @@ pygame.time.delay(1000)
 # aloud" will be less natural.
 
 for el in message:
-    #print el # wyświetlanie nazw próbek 
     if el == "_":
         pygame.time.wait(500)
     else:
@@ -315,16 +259,11 @@ pygame.time.delay(1000)
 # If we've opened serial it's now time to close it.
 try:
     if config.serial_port is not None:
-        ser.close()
-        logger.info(COLOR_OKGREEN + "RTS/PTT set to OFF\n" + COLOR_ENDC)
+        if ser != None:
+            ser.close()
+            logger.info(COLOR_OKGREEN + "RTS/PTT set to OFF\n" + COLOR_ENDC)
 except NameError:
-    # sudo gpasswd --add ${USER} dialout 
     logger.exception(COLOR_FAIL + "Couldn't close serial port" + COLOR_ENDC)
-
-
-
 
 logger.info(COLOR_WARNING + "goodbye" + COLOR_ENDC)
 
-# Documentation is a good thing when you need to double or triple your
-# Lines-Of-Code index ;)
