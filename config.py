@@ -34,8 +34,8 @@ serial_baud_rate = 9600         # Serial port baud rate
 serial_signal = 'DTR'           # PTT serial port signal to be used 'DTR' or 'RTS'
 
 data_sources_error_msg = ['_','zrodlo_danych_niedostepne']
-hello_msg = ['_','tu_eksperymentalna_automatyczna_stacja_pogodowa','sr0wx']
-goodbye_msg = ['_','tu_sr0wx']
+hello_msg = ['_','tu_eksperymentalna_automatyczna_stacja_pogodowa','sr0wx']     # Welcome message - ensure to keep your callsign in
+goodbye_msg = ['_','tu_sr0wx']                                                  # Closing message - ensure to keep your callsign in
 read_sources_msg = False
 
 # -------------
