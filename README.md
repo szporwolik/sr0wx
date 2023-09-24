@@ -65,11 +65,11 @@ This software requires Python 3.11 with modules:
 ``sudo apt-get install git python-pygame python-tz python-imaging python-serial python-six curl php7.0 php7.0-curl php7.0-xml ffmpeg``
 
 Also the following system dependencies are to be met:
-``sudo apt-get install git python-pygame python-tz python-imaging python-serial python-six curl php7.0 php7.0-curl php7.0-xml ffmpeg``
+``git``
 
 ## Cloning the code
 You can download the script using git by running the following command
-``sudo apt-get install git python-pygame python-tz python-imaging python-serial python-six curl php7.0 php7.0-curl php7.0-xml ffmpeg``
+``git clone https://github.com/szporwolik/sr0wx``
 
 ## Configuration
 Rename ``config.py_example`` to ``config.py``. 
