@@ -48,15 +48,14 @@ sr0wx.py does not require specific OS, but we strongly recommend to use
 Debian/Ubuntu based Linux distros, as this is what the sr0wx team is 
 using and this was assumed in the documentation. 
 
-Ubuntu does not support 32bit images anymore which will be required 
-for some of the installations, in that case we recommend Debian 12 
-installation. 
+***Running on 32bit CPUs:*** Ubuntu does not support 32bit images anymore 
+which will be required for some of the installations, in that case we 
+recommend to try Debian installation. Unfortunetly the team had issues 
+running Debian 12 at the CPU without SSE2 instructions.
 
-The images can be pulled from:
-https://www.debian.org/CD/http-ftp/#stable
-
-For 64bit capable machine Ubuntu Server may also be a resonable choice,
-https://ubuntu.com/server .
+So, if you are planning to use very old 32bit CPU - Ubuntu 16.04 may be 
+worth considering (please keep in mind that that is not supported
+by Canonical anymore).
 
 **This software is not meant to run on Windows machines.**
 
@@ -91,7 +90,13 @@ to execute the script:
 Check the python version:
 ``python3 --version``
 
-This shall be 3.11 at least to ensure proper execution. 
+This shall be 3.10 at least to ensure proper execution. The team 
+succedded with Python 3.11 install at Ubuntu 16.04 machine, unfortunetly
+binary files seems to not be available - compiling the source code was
+required. There is a decent manual available at:
+https://www.osetc.com/en/how-to-install-the-latest-python-3-7-on-ubuntu-16-04-or-18-04.html .
+If going this path please ensure you install openssl from sources as well as it
+seems that Python 3.10 requires OpenSSL lib to be at least 1.1.1.
 
 Runing the script:
 ``python3 ./sr0wx.py``
