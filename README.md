@@ -15,6 +15,12 @@ and keep the support till 2023, when main activity was continued by the hams fro
 SP9MOA.
 
 # Installation
+## Operating system
+sr0wx.py does not reqire specific OS, but we strongly recommend to use Debian/Ubuntu based distros.
+
+Ubuntu does not support 32bit images which will be required for some of the installations, in that 
+case we recommend Debian 12 install.
+
 ## Environment
 This software requires Python 3.11 and following dependencies:
 ``sudo apt-get install git python-pygame python-tz python-imaging python-serial python-six curl php7.0 php7.0-curl php7.0-xml ffmpeg``
@@ -24,6 +30,13 @@ Ubuntu and Debian distros are recommended.
 In most of the systems the following persmissions are usually needed to execute the script:
 ``sudo gpasswd --add ${USER} dialout
 sudo gpasswd --add ${USER} audio``
+
+## Configuration
+Rename ``config.py_example`` to ``config.py``. 
+Modify ``config.py`` to suit your needs 
+
+## Runing
+
 
 ## Cron instalation
 ``crontab -e``

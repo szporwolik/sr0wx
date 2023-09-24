@@ -121,10 +121,6 @@ if config.serial_port is not None:
     
     pygame.time.delay(1000) # Ensure PTT is enabled and TRX is transmitting
 
-
-
-
-
 # Playback
 logger.info(module_logger.text_color(module_constants.COLOR_OKGREEN,"Transmitting"))
 for el in message:
