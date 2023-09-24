@@ -1,10 +1,3 @@
- ___________ _____  _    ___   __
-/  ___| ___ \  _  || |  | \ \ / /
-\ `--.| |_/ / |/' || |  | |\ V / 
- `--. \    /|  /| || |/\| |/   \ 
-/\__/ / |\ \\ |_/ /\  /\  / /^\ \
-\____/\_| \_|\___/  \/  \/\/   \/
- 
 # About & History
 Every automatic station's callsign in Poland (SP) is prefixed by "SR".
 This software is intended to read aloud weather informations (mainly).
