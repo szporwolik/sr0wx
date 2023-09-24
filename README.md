@@ -32,4 +32,8 @@ sudo gpasswd --add ${USER} audio``
 ## Transimitting
 Configuration is handled within config.py file, you shall not modify anything out of that file.
 
-# License
+# Writting a plugin
+Write a plugin and add it into ``src`` direcotory. Add init code into ``src\module_init.py`` and sample config into ``config.py``
+
+## License
+Initial code was released by SQ6JNX using Apache License, Version 2.0. This license applies to the whole repository.
