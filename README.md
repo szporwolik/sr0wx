@@ -55,17 +55,21 @@ installation.
 The images can be pulled from:
 https://www.debian.org/CD/http-ftp/#stable
 
-For 64bit capable machine Ubuntu Server may also be a good choice,
+For 64bit capable machine Ubuntu Server may also be a resonable choice,
 https://ubuntu.com/server .
 
 **This software is not meant to run on Windows machines.**
 
 ## Environment
-This software requires Python 3.11 with modules:
-``sudo apt-get install git python-pygame python-tz python-imaging python-serial python-six curl php7.0 php7.0-curl php7.0-xml ffmpeg``
-
-Also the following system dependencies are to be met:
+The following system dependencies are to be met or are recommended:
 ``git``
+
+Also software requires Python 3.11 with the following modules:
+``pygame``
+
+You can install those by ``pip`` or system packages. For most of Ubuntu/
+Debian distros the dependencies can be met by installing:
+``python3-pygame``
 
 ## Cloning the code
 You can download the script using git by running the following command
@@ -85,12 +89,12 @@ to execute the script:
 
 ## Runing
 Check the python version:
-``config.py``
+``python3 --version``
 
-This shall be 3.11 at least to ensure proper execution.
+This shall be 3.11 at least to ensure proper execution. 
 
 Runing the script:
-``config.py``
+``python3 ./sr0wx.py``
 
 ## Cron installation
 You can make ensure automatic execution with the crontab:

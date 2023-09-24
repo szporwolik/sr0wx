@@ -8,7 +8,6 @@
 import os
 import pygame
 import logging, logging.handlers
-import numpy
 import asyncio
 
 from src import module_soundsamples, module_init, module_logger, module_constants, module_helpers
