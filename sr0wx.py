@@ -8,6 +8,7 @@
 import os
 import pygame
 import logging, logging.handlers
+import numpy
 import asyncio
 
 from src import module_soundsamples, module_init, module_logger, module_constants, module_helpers
@@ -63,7 +64,7 @@ logger.info(module_logger.text_color(module_constants.COLOR_OKGREEN,"Clearing ca
 module_soundsamples.SoundSampleClearCache(logger,os.path.join('cache'),config.cache_max_age)
 
 # Start ``pygame``'s mixer (and ``pygame``) and define sound quality (44kHz 16bit, stereo)
-pygame.mixer.init(16000, -16, 2, 1024) 
+pygame.mixer.init(44000, -16, 2, 1024) 
 
 # Prepare sound samples - generate missing ones
 logger.info(module_logger.text_color(module_constants.COLOR_OKGREEN,"Preparing sound samples"))

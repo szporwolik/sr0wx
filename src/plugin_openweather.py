@@ -125,9 +125,8 @@ class OpenWeather(plugin_scaffold.SR0WXModule):
 
     def getWind(self, json):
         msg = '';
-        msg += 'wiatr ' 
-
-        if 'deg' in json:
+        
+        if 'deg' in json and int(json['speed']) > 5:
             if 0 <= json['deg'] < 23:  msg += 'północny'
             if 23 <= json['deg'] < 67:  msg += 'północno wschodni'
             if 67 <= json['deg'] < 112:  msg += ' wschodni '
@@ -138,8 +137,25 @@ class OpenWeather(plugin_scaffold.SR0WXModule):
             if 292 <= json['deg'] < 337:  msg += 'północno zachodni'
             if 337 <= json['deg'] < 360:  msg += 'północny'
         msg += '.'
-        msg += '' + self.__language.read_speed( int(json['speed']/1000*3600),'kmph')
+        
+        if 'speed' in json:
+            if 0 <= int(json['speed']) < 1:  msg += 'brak wiatru'
+            if 1 <= int(json['speed']) < 5:  msg += 'lekkie powiewy wiatru'
+            if 5 <= int(json['speed']) < 11:  msg += 'słaby wiatr'
+            if 11 <= int(json['speed']) < 19:  msg += 'łagodny wiatr'
+            if 19 <= int(json['speed']) < 28:  msg += 'umiarkowany wiatr'
+            if 28 <= int(json['speed']) < 38:  msg += 'dość silny wiatr'
+            if 38 <= int(json['speed']) < 49:  msg += 'silny wiatr'
+            if 49 <= int(json['speed']) < 61:  msg += 'bardzo silny wiatr'
+            if 61 <= int(json['speed']) < 74:  msg += 'sztorm'
+            if 74 <= int(json['speed']) < 88:  msg += 'silny sztorm'
+            if 88 <= int(json['speed']) < 102:  msg += 'bardzo silny sztorm'
+            if 102 <= int(json['speed']) < 117:  msg += 'gwałtowny sztorm'
+            if 117 <= int(json['speed']):  msg += 'huragan'
+            
         msg += '.'
+        #msg += '' + self.__language.read_speed( int(json['speed']/1000*3600),'kmph')
+        #msg += '.'
         return msg
 
     def get_data(self):
@@ -164,6 +180,14 @@ class OpenWeather(plugin_scaffold.SR0WXModule):
                         self.getWind( weatherJson['wind'] ), \
                      ])
 
+        forecastJson = forecastJsonAll['list'][1]
+        message += "".join([ \
+                        "Prognoza na kolejne cztery godziny..", 
+                        self.getWeather( forecastJson['weather'] ), \
+                        self.getMainConditions( forecastJson['main'] ), \
+                        self.getWind( forecastJson['wind'] ), \
+                     ])
+        
         forecastJson = forecastJsonAll['list'][4]
         message += "".join([ \
                         "Prognoza na kolejne dwanaście godzin.", 
