@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 
+"""Pyliczba is a Python utility module for converting numerical values to Polish text, 
+   useful in printing invoices etc. 
+   For now, it is a single source file which you can get at kwotaslownie.py
+   Basing on https://github.com/sq6jnx/pyliczba and
+   https://github.com/dowgird/pyliczba
+"""
+
 from six import u
 
 """Liczba słownie.

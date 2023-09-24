@@ -1,5 +1,9 @@
-#!/usr/env/python -tt
-# -*- encoding=utf8 -*-
+# -*- coding: utf-8 -*-
+
+"""Plugin to send station information to the clusters
+   this includes http://wx.ostol.pl/.
+"""
+
 #
 #   Copyright 2009-2014 Michal Sadowski (sq6jnx at hamradio dot pl)
 #

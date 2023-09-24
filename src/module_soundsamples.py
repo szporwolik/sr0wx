@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+
+"""Module to handle the sound samples in the cache directory.
+"""
+
 from aiogtts import aiogTTS
 import re
 import os

@@ -1,4 +1,8 @@
-# SR0WX configuration file
+# -*- coding: utf-8 -*-
+
+"""This is main config file for sr0wx.px.
+   Refer README.md for more information and manual.
+"""
 
 # ===============
 # General Config

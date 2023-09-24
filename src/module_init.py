@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+
+"""Core module to handle all the plugin initialisation.
+"""
+
 import logging, logging.handlers
 import src.lang_pl as lang_pl
 import config

@@ -1,6 +1,9 @@
-#!/usr/bin/python -tt
 # -*- coding: utf-8 -*-
-#
+
+"""This is plugin scaffold module. All modules 
+   Shall derivate from this class.
+"""
+
 #   Copyright 2014 Michal Sadowski (sq6jnx at hamradio dot pl)
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");

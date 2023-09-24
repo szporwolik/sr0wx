@@ -1,4 +1,10 @@
-# basing on openweather_sq9atk module
+# -*- coding: utf-8 -*-
+
+"""This is plugin tp get OpenWeather information.
+   The code is basind on openweather_sq9atk module
+   created by Paweł SQ9ATK.
+"""
+
 import urllib.request
 import urllib.error
 import logging

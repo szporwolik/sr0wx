@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+
+"""Language module for PL - Polish language.
+"""
+
 #
 #   Copyright 2009-2014 Michal Sadowski (sq6jnx at hamradio dot pl)
 #
