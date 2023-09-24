@@ -14,7 +14,6 @@ import numpy
 import urllib.request
 import urllib.error
 import asyncio
-from io import BytesIO
 from src import module_soundsamples, module_init
 import config
 

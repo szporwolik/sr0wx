@@ -20,11 +20,11 @@ cache_max_age = 1                                                           # Nu
 
 # Station information
 station_callsign = "SR0WX"                                                  # Text: Station callsign
-station_latitude=54.655245,                                                 # Number: Latitude coordinate of the station 
-station_longitude=19.268097,                                                # Number: Longitude coordinate of the station 
-station_AGL=20,                                                             # Number: AGL - above ground level height in meters
-station_ASL = 200,                                                          # Number: ASL - above sea level height in meters
-station_range=65,                                                           # Number: Station range in kilometers
+station_latitude=54.655245                                                  # Number: Latitude coordinate of the station 
+station_longitude=19.268097                                                 # Number: Longitude coordinate of the station 
+station_AGL=20                                                              # Number: AGL - above ground level height in meters
+station_ASL = 200                                                           # Number: ASL - above sea level height in meters
+station_range=65                                                            # Number: Station range in kilometers
 station_additional_info= "Automatyczna stacja pogodowa",                    # Text: Additional description to be send to the clusters (inc. https://ostol.pl/stacja-pogodowa-sr0wx-py), please KEEP IT SHORT
 
 # Messages
