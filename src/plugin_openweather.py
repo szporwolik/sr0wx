@@ -176,5 +176,5 @@ class OpenWeather(plugin_scaffold.SR0WXModule):
                 
         return {
             "message": message,
-            "source": "open_weather_map",
+            "source": "open weather map",
         }

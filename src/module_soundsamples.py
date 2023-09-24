@@ -31,4 +31,4 @@ async def SoundSampleGenerate(logger,text,lang):
         aiogtts = aiogTTS()
         await aiogtts.save(text,os.path.join('cache', SoundSampleGetFilename(text,lang) ), lang)
     else:
-        logger.info("Skipping sound sample ["+lang+"]: " + text )
+        logger.info("Sound sample exist, skipping ["+lang+"]: " + text )
