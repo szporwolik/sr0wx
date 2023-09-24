@@ -18,16 +18,26 @@ serial_signal = 'DTR'                                                       # Te
 # Cache settings
 cache_max_age = 1                                                           # Number: Maximum number of hours after which sound sample shall be regenerated
 
-# Station configuration
-hello_msg = 'Tutaj stacja pogodowa SR0WX'                                   # Text: Welcome message, played at the begining of transmission - ensure to keep your callsign in
-goodbye_msg = 'Tutaj Stefan Roman Zero Wanda Ksawery'                       # Text: Closing message, played at the begining of transmission - ensure to keep your callsign in
-callsign = "SR0WX"                                                          # Text: Station callsign
-latitude=54.655245,                                                         # Number: Latitude coordinate of the station 
-longitude=19.268097,                                                        # Number: Longitude coordinate of the station 
-above_ground_level=20,                                                      # Number: AGL heigh in meters
+# Station information
+station_callsign = "SR0WX"                                                  # Text: Station callsign
+station_latitude=54.655245,                                                 # Number: Latitude coordinate of the station 
+station_longitude=19.268097,                                                # Number: Longitude coordinate of the station 
+station_AGL=20,                                                             # Number: AGL - above ground level height in meters
+station_ASL = 200,                                                          # Number: ASL - above sea level height in meters
 station_range=65,                                                           # Number: Station range in kilometers
-additional_info= "Automatyczna stacja pogodowa",                            # Text: Additional description to be send to the clusters, please KEEP IT SHORT
+station_additional_info= "Automatyczna stacja pogodowa",                    # Text: Additional description to be send to the clusters (inc. https://ostol.pl/stacja-pogodowa-sr0wx-py), please KEEP IT SHORT
+
+# Messages
+message_welcome = 'Tutaj stacja pogodowa SR0WX'                             # Text: Welcome message, played at the begining of transmission - ensure to keep your callsign in
+message_goodbye = 'Tutaj Stefan Roman Zero Wanda Ksawery'                   # Text: Closing message, played at the end of transmission - ensure to keep your callsign in
 
 # ===============
-# Module configuration
+# Plugins configuration
 # ===============
+
+plugin_activity_map = True                                                  # Bool: Send station information to cluster (inc. https://ostol.pl/stacja-pogodowa-sr0wx-py) if True, this module sends status messages to https://ostol.pl/, strongly recommended to have it active to track the SR0WX community
+
+plugin_openweather = True                                                   # Bool: Enables weather module basing on openweathermap service if True
+plugin_openweather_api_key = 'ee78911a0fb560b58144230f46e0d4b2'             # Text: Openweather API key visit https://openweathermap.org/api to get it, all you need is to register (service if FREE)
+
+                          

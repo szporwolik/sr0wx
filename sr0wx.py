@@ -113,7 +113,7 @@ for module in modules:
 # When all the modules finished its' work it's time to ``.split()`` returned
 # data. Every element of returned list is actually a filename of a sample.
 
-message = [config.hello_msg] + message.split(sep=".")
+message = [config.message_welcome] + message.split(sep=".")
 
 if hasattr(module_init, 'read_sources_msg'):
     if module_init.read_sources_msg:
@@ -121,7 +121,7 @@ if hasattr(module_init, 'read_sources_msg'):
             message += sources
 else:
     message += sources
-message += [config.goodbye_msg]
+message += [config.message_goodbye]
 
 # It's time to init ``pygame``'s mixer (and ``pygame``). Possibly defined
 # sound quality is far-too-good (44kHz 16bit, stereo), so you can change it.

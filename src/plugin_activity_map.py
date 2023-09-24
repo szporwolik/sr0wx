@@ -42,7 +42,7 @@ Parameters:
     """
     def __init__(self, callsign, latitude, longitude,
                  above_sea_level, above_ground_level, station_range,
-                 additional_info="", service_url=""):
+                 additional_info="", service_url="", active = False):
         self.__callsign = callsign
         self.__latitude = latitude
         self.__longitude = longitude
@@ -52,6 +52,7 @@ Parameters:
         self.__station_range = station_range
         self.__additional_info = additional_info
         self.__service_url = service_url
+        self.active = active
 
         self.__logger = logging.getLogger(__name__)
 

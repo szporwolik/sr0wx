@@ -60,23 +60,27 @@ pygame_bug = 0
 
 data_sources_error_msg = ['Data source is not not available']
 read_sources_msg = True
-    
+
+modules=[]
 # -------------
 # Module - activity_map
 # ------------
-# This module sends status messages to https://ostol.pl/, strongly recommended to have it active to track the SR0WX community
 
-from src import plugin_activity_map
-plugin_activitymap = plugin_activity_map.ActivityMap(
-    service_url="http://wx.ostol.pl/map_requests?base=",
-    callsign=config.callsign,
-    latitude=54.655245,
-    longitude=19.268097,
-    above_sea_level=225,
-    above_ground_level=20,
-    station_range=65,
-    additional_info= "Automatic weather station",
-)
+if hasattr(config,"plugin_activity_map"):
+    from src import plugin_activity_map
+    plugin_activitymap = plugin_activity_map.ActivityMap(
+        service_url="http://wx.ostol.pl/map_requests?base=",
+        callsign=config.station_callsign,
+        latitude=config.station_latitude,
+        longitude=config.station_longitude,
+        above_sea_level=config.station_ASL,
+        above_ground_level=config.station_ASL,
+        station_range=config.station_range,
+        additional_info= config.station_additional_info,
+    )
+    if(config.plugin_activity_map):
+        modules+=[plugin_activitymap]
+
 
 # ===============
 # Global Modules
@@ -112,17 +116,17 @@ openweathersq9atk = OpenWeatherSq9atk(
 # ---------------
 # Module - openweather
 # ---------------
-# Weather module basing on openweathermap service
-# Visit https://openweathermap.org/api to get the API key, all you need is to register
-
-from src import plugin_openweather
-plugin_openweather = plugin_openweather.OpenWeather(
-    language = lang_pl,
-    api_key = 'ee78911a0fb560b58144230f46e0d4b2',
-    lat = 50,
-    lon = 20,
-    service_url = 'http://api.openweathermap.org/data/2.5/'
-)
+if hasattr(config,"plugin_openweather"):
+    from src import plugin_openweather
+    plugin_openweather = plugin_openweather.OpenWeather(
+        language = lang_pl,
+        api_key = config.plugin_openweather_api_key,
+        lat = config.station_latitude,
+        lon = config.station_longitude,
+        service_url = 'http://api.openweathermap.org/data/2.5/'
+    )
+    if(config.plugin_openweather):
+        modules+=[plugin_openweather]
 
 # ---------------
 # radioactive_sq9atk
@@ -219,19 +223,3 @@ geomagneticsq9atk = GeoMagneticSq9atk(
     service_url="https://www.gismeteo.pl/weather-krakow-3212/gm/",  # Example -> Kraków
 )
 """
-# ===============
-# Enabled Modules
-# ===============
-modules = [
-    plugin_activitymap,            # marker na mapie wx.ostol.pl
-    #openweathersq9atk,      # prognoza pogody
-    plugin_openweather,             # prognoza pogody
-    #imgwpodestsq9atk,       # wodowskazy
-    #airpollutionsq9atk,     # zanieczyszczenia powietrza z GIOŚ
-    #airlysq9atk,            # zanieczyszczenia powietrza z Airly
-    #vhftroposq9atk,         # vhf tropo propagacja
-    #propagationsq9atk,      # propagacja KF
-    #geomagneticsq9atk,      # zaburzenia geomagnetyczne
-    #radioactivesq9atk,      # promieniowanie jonizujące
-    #calendarsq9atk,         # wschód słońca
-]
