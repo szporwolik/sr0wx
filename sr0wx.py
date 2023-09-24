@@ -1,9 +1,9 @@
-# ********
-# sr0wx.py
-# ********
-#
-# This is main program file for automatic weather station project;
-# codename SR0WX. Refer README.md for more information and manual.
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""This is main program file for automatic weather station project;
+   codename SR0WX. Refer README.md for more information and manual.
+"""
 
 import getopt
 import os
