@@ -29,7 +29,7 @@ limitations under the License.
 
 -----------------------------------------------------------
 
-You can find full list of contributors on:
+You can find full list of contributors at:
 - github.com/sq6jnx/sr0wx.py
 - github.com/sq9atk/sr0wx
 
