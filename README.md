@@ -69,6 +69,8 @@ The following system dependencies are to be met or are recommended:
 Also software requires Python 3.7 with the following modules:
 ``pygame numpy aiogTTS six astral serial``
 
+``pygame`` version ``2.0.0`` is sufficient.
+
 You can install those by ``pip`` package manager or system packages.
 
 ## Cloning the code
