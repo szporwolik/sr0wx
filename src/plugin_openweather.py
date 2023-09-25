@@ -12,7 +12,7 @@ from datetime import datetime
 import json as JSON
 from src import plugin_scaffold
 
-class OpenWeather(plugin_scaffold.SR0WXModule):
+class OpenWeather(plugin_scaffold.SR0WXPlugin):
     """Klasa pobierająca dane o promieniowaniu"""
 
     def __init__(self, language, api_key, lat, lon, service_url):
@@ -101,14 +101,14 @@ class OpenWeather(plugin_scaffold.SR0WXModule):
         return time_words
 
     def getWeather(self, json):    
-        message = '';
+        message = ''
         for row in json:
             if row['id'] in self.events:
                 message += '' + self.events[row['id']] + '.'
         return message
 
     def getClouds(self, json):
-        msg = '';
+        msg = ''
         if json['all'] > 0:
             msg += 'pokrywa chmur ' + self.__language.read_percent( int(json['all']) )
         return msg
@@ -119,12 +119,12 @@ class OpenWeather(plugin_scaffold.SR0WXModule):
         return msg
 
     def getVisibility(self, json):
-        msg = '';
+        msg = ''
         msg += 'widoczność' + self.__language.read_distance( int(json/1000) )
         return msg
 
     def getWind(self, json):
-        msg = '';
+        msg = ''
         
         if 'deg' in json and int(json['speed']) > 5:
             if 0 <= json['deg'] < 23:  msg += 'północny'
@@ -136,7 +136,7 @@ class OpenWeather(plugin_scaffold.SR0WXModule):
             if 247 <= json['deg'] < 292:  msg += 'zachodni'
             if 292 <= json['deg'] < 337:  msg += 'północno zachodni'
             if 337 <= json['deg'] < 360:  msg += 'północny'
-        msg += '.'
+            msg += ' '
         
         if 'speed' in json:
             if 0 <= int(json['speed']) < 1:  msg += 'brak wiatru'
@@ -182,7 +182,7 @@ class OpenWeather(plugin_scaffold.SR0WXModule):
 
         forecastJson = forecastJsonAll['list'][1]
         message += "".join([ \
-                        "Prognoza na kolejne cztery godziny..", 
+                        "Prognoza na kolejne cztery godziny.", 
                         self.getWeather( forecastJson['weather'] ), \
                         self.getMainConditions( forecastJson['main'] ), \
                         self.getWind( forecastJson['wind'] ), \
@@ -197,8 +197,6 @@ class OpenWeather(plugin_scaffold.SR0WXModule):
                      ])
 
         self.__logger.info("::: Data prepared\n")
-                
-        return {
-            "message": message,
-            "source": "open weather map",
-        }
+
+        self.message = message
+        self.source = "open weather map"

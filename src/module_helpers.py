@@ -5,6 +5,7 @@
 
 from urllib.request import Request, urlopen
 from urllib.error import URLError, HTTPError 
+import os
 
 def CheckInternetConnection():
     req = Request("http://google.com")
@@ -16,4 +17,7 @@ def CheckInternetConnection():
         return False
     else:
         return True
-  
+
+def CheckOrCreateDir(dir):
+    if not os.path.exists(dir):
+        os.makedirs(dir) 

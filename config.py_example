@@ -11,11 +11,8 @@
 # Localisation settings
 lang = "pl"                                                                 # Text: Station language, PL (Polish) is the ONLY ONE supported for now
 
-# CTSS
-ctcss_tone = 88.5                                                           # Number: CTCSS Tone frequency, put number or 0 to disable
-
 # Serial port for PTT
-serial_port = '/dev/ttyS0'                                                  # Text: Serial port to be used for PTTY config, set to '' to disable
+serial_port = '/dev/ttyS0'                                                  # Text: Serial port to be used for PTTY config, set to None to disable
 serial_baud_rate = 9600                                                     # Number: Serial port baud rate
 serial_signal = 'DTR'                                                       # Text: PTT serial port signal to be used 'DTR' or 'RTS'
 
@@ -32,7 +29,7 @@ station_range=65                                                            # Nu
 station_additional_info= "Automatic weather station",                       # Text: Additional description to be send to the clusters (inc. https://ostol.pl/stacja-pogodowa-sr0wx-py), please KEEP IT SHORT
 
 # Messages
-message_welcome = 'This is  SR0WX'                                          # Text: Welcome message, played at the begining of transmission - ensure to keep your callsign in
+message_welcome = 'This is SR0WX'                                           # Text: Welcome message, played at the begining of transmission - ensure to keep your callsign in
 message_goodbye = 'This was Sierra Romeo Zero Whiskey X-Ray'                # Text: Closing message, played at the end of transmission - ensure to keep your callsign in
 
 # ===============
@@ -44,4 +41,4 @@ plugin_activity_map = True                                                  # Bo
 plugin_openweather = False                                                  # Bool: Enables weather module basing on openweathermap service if True
 plugin_openweather_api_key = ''                                             # Text: Openweather API key visit https://openweathermap.org/api to get it, all you need is to register (service if FREE)
 
-plugin_calendar = False                                                      # Bool: Enables calendar module
+plugin_calendar = False                                                     # Bool: Enables calendar module

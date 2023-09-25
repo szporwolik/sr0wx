@@ -14,7 +14,7 @@ import time
 from datetime import datetime
 from src import plugin_scaffold
 
-class Calendar(plugin_scaffold.SR0WXModule):
+class Calendar(plugin_scaffold.SR0WXPlugin):
     """Klasa pobierająca dane kalendarzowe"""
 
     def __init__(self,language,lat, lon):
