@@ -4,9 +4,18 @@
 """
 
 import logging, logging.handlers
-import src.lang_pl as lang_pl
 import config
 
+
+if config.lang == "pl":
+    from src import lang_pl as lang_module
+elif config.lang == "en":
+    from src import lang_en as lang_module
+else:
+    from src import lang_en as lang_module
+    
+language = lang_module.SR0WXSpecificLanguage()
+    
 # Logging configuration
 log_line_format = '%(asctime)s %(name)s %(levelname)s: %(message)s'
 log_handlers = [{
@@ -26,14 +35,12 @@ log_handlers = [{
         }
     }]
 
-lang = "pl"
-pygame_bug = 0
-
 data_sources_error_msg = ['Data source is not not available']
 data_sources_info_msg = ['Prepared basing on']
 read_sources_msg = False
 
-modules=[]
+plugins=[]
+
 # -------------
 # Module - activity_map
 # ------------
@@ -51,7 +58,7 @@ if hasattr(config,"plugin_activity_map"):
         additional_info= config.station_additional_info,
     )
     if(config.plugin_activity_map):
-        modules+=[plugin_activitymap]
+        plugins+=[plugin_activitymap]
 
 
 # ===============
@@ -65,12 +72,12 @@ if hasattr(config,"plugin_activity_map"):
 if hasattr(config,"plugin_calendar"):
     from src import plugin_calendar
     plugin_calendar = plugin_calendar.Calendar(
-        language=lang_pl,
+        language=language,
         lat = config.station_latitude,
         lon = config.station_longitude,
     )
     if(config.plugin_calendar):
-        modules+=[plugin_calendar]
+        plugins+=[plugin_calendar]
         
 # ---------------
 # Module - openweather_sq9atk
@@ -93,14 +100,14 @@ openweathersq9atk = OpenWeatherSq9atk(
 if hasattr(config,"plugin_openweather"):
     from src import plugin_openweather
     plugin_openweather = plugin_openweather.OpenWeather(
-        language = lang_pl,
+        language = language,
         api_key = config.plugin_openweather_api_key,
         lat = config.station_latitude,
         lon = config.station_longitude,
         service_url = 'http://api.openweathermap.org/data/2.5/'
     )
     if(config.plugin_openweather):
-        modules+=[plugin_openweather]
+        plugins+=[plugin_openweather]
 
 # ---------------
 # radioactive_sq9atk

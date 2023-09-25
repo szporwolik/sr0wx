@@ -7,105 +7,88 @@
 
 import os
 import pygame
-import logging, logging.handlers
-import numpy
 import asyncio
 
 from src import module_soundsamples, module_init, module_logger, module_constants, module_helpers
 import config
 
-message = ""   # All datas returned by SR0WX modules will be stored in ``message`` variable.
-sources = []
-modules = module_init.modules # List of moddules to be executed
+plugins_list = module_init.plugins              # List of moddules to be executed
+plugin_sources = []                             # List of data sources
+sr0wx_message = ""                              # All datas returned by SR0WX modules will be stored in ``message`` variable.
 
 # Create file/folder structure
 module_helpers.CheckOrCreateDir("logs")
 module_helpers.CheckOrCreateDir("cache")
 
-logger = module_logger.setup_logging(module_init) # Initialize root logger
-    
-logger.info(module_logger.text_color(module_constants.COLOR_WARNING,"sr0wx.py has started it's execution"))
+# Initialize root logger
+logger = module_logger.setup_logging(module_init) 
+
+# Display welcome information to the user
+logger.info(module_logger.text_color(module_constants.COLOR_WARNING,"sr0wx.py has started"))
 logger.info(module_logger.text_color(module_constants.COLOR_OKBLUE,module_constants.LICENSE))
 
 # Handle no internet situation
 if module_helpers.CheckInternetConnection() != True:
-    modules = []
+    plugins_list = []
     logger.info(module_logger.text_color(module_constants.COLOR_FAIL, "No internet connection"))
 
 # Execute modules    
-for module in modules:
+for plugin in plugins_list:
     try:
-        logger.info(module_constants.COLOR_OKGREEN + "starting %s..." + module_constants.COLOR_ENDC, module)
-        module_data = module.get_data()
-        module_message = module_data.get("message", "")
-        module_source = module_data.get("source", "")
-
-        message = "".join((message, module_message))
-        if module_message != "" and module_source != "":
-            sources.append(module_data['source'])
+        logger.info(module_logger.text_color(module_constants.COLOR_OKGREEN, "Starting plugin: %s"),plugin)
+        plugin.get_data()
+        
+        sr0wx_message = "".join((sr0wx_message, plugin.message))
+        
+        if plugin.message != "" and plugin.source != "":
+            plugin_sources.append(plugin.source)
     except:
         logger.exception(module_logger.text_color(module_constants.COLOR_FAIL,"Exception when running module" ))
 
-# When all the modules finished its' work it's time to ``.split()`` returned
-# data. We split the message by comas, every sentence shall be a seperate
-# sound sample
+# When all the modules finished its' work it's time to split the received messages to sentences
+sr0wx_message = [config.message_welcome] + sr0wx_message.split(sep=".") 
 
-message = [config.message_welcome] + message.split(sep=".") 
-
-# Depending on the config, we may want to list all the sources 
+# Depending on the config, build data sources list to be read
 if hasattr(module_init, 'read_sources_msg'):
     if module_init.read_sources_msg:
-        if len(sources) >= 1:
-            message += module_init.data_sources_info_msg
-            message += sources
-else:
-    message += sources
+        if len(plugin_sources) >= 1:
+            sr0wx_message += module_init.data_sources_info_msg
+            sr0wx_message += plugin_sources
     
-message += [config.message_goodbye]
+sr0wx_message += [config.message_goodbye]
 
-# Handle cache clering, this shall prevent indefinity storage expansion
+# Prepare sound samples - generate missing ones
+logger.info(module_logger.text_color(module_constants.COLOR_OKGREEN,"Message to be transmitted"))
+for el in sr0wx_message:
+    logger.info("|"+el+"|")
+
+# Handle cache clearing, this shall prevent indefinity storage expansion
 logger.info(module_logger.text_color(module_constants.COLOR_OKGREEN,"Clearing cache"))
 module_soundsamples.SoundSampleClearCache(logger,os.path.join('cache'),config.cache_max_age)
 
-# Start ``pygame``'s mixer (and ``pygame``) and define sound quality (44kHz 16bit, stereo)
+# Start ``pygame``'s mixer (and ``pygame``), define sound quality (44kHz 16bit, stereo)
 pygame.mixer.init(44000, -16, 2, 1024) 
 
 # Prepare sound samples - generate missing ones
 logger.info(module_logger.text_color(module_constants.COLOR_OKGREEN,"Preparing sound samples"))
-for el in message:
+for el in sr0wx_message:
     if el != '' and el != ' ':
-        asyncio.get_event_loop().run_until_complete(module_soundsamples.SoundSampleGenerate(logger,el, module_init.lang))
-
-# Handle CTSS
-# TBD
-#if hasattr(module_init, 'ctcss_tone'):
-    #volume = 25000
-    #arr = numpy.array([volume * numpy.sin(2.0 * numpy.pi * round(module_init.ctcss_tone) * x / 16000) for x in range(0, 16000)]).astype(numpy.int16)
-    #arr2 = numpy.c_[arr,arr]
-    #ctcss = pygame.sndarray.make_sound(arr2) # TBD
-    #ctcss.play(-1) TBD
-    #logger.info(module_constants.COLOR_WARNING + "CTCSS tone %sHz" + module_constants.COLOR_ENDC, "%.1f" % module_init.ctcss_tone)
-    
-
-logger.info(module_logger.text_color(module_constants.COLOR_OKGREEN,"Preloading sound samples"))
+        asyncio.get_event_loop().run_until_complete(module_soundsamples.SoundSampleGenerate(logger,el, module_init.language.isocode))
 
 # Load all required samples into memory
+logger.info(module_logger.text_color(module_constants.COLOR_OKGREEN,"Preloading sound samples"))
+
 sound_samples = {}
-for el in message:
-    if el != '' and el != ' ':
-        if "upper" in dir(el):
-            if el[0:7] == 'file://':
-                sound_samples[el] = pygame.mixer.Sound(el[7:])
-
-            if el != "_" and el not in sound_samples:
-                if not os.path.isfile('cache' + "/" + module_soundsamples.SoundSampleGetFilename(el,module_init.lang)):
-                    logger.warning(module_constants.COLOR_FAIL + "Couldn't find %s" % ('cache' + "/" + module_soundsamples.SoundSampleGetFilename(el,module_init.lang) + module_constants.COLOR_ENDC))
-                    sound_samples[el] = pygame.mixer.Sound('sounds' + "/beep.ogg")
-                else:
-                    sound_samples[el] = pygame.mixer.Sound('cache' + "/" + module_soundsamples.SoundSampleGetFilename(el,module_init.lang))
-
+for el in sr0wx_message:
+    if el != '' and el != ' ' and el != "_":
+        if not os.path.isfile('cache' + "/" + module_soundsamples.SoundSampleGetFilename(el,module_init.language.isocode)):
+            logger.warning(module_constants.COLOR_FAIL + "Couldn't find %s" % ('cache' + "/" + module_soundsamples.SoundSampleGetFilename(el,module_init.language.isocode) + module_constants.COLOR_ENDC))
+            sound_samples[el] = pygame.mixer.Sound('sounds' + "/beep.ogg")
+        else:
+            sound_samples[el] = pygame.mixer.Sound('cache' + "/" + module_soundsamples.SoundSampleGetFilename(el,module_init.language.isocode))
 
 # Setting PTT via serial port
+logger.info(module_logger.text_color(module_constants.COLOR_OKGREEN,"PTT control started"))
 ser = None
 if config.serial_port is not None:
     import serial
@@ -127,21 +110,12 @@ if config.serial_port is not None:
 
 # Playback
 logger.info(module_logger.text_color(module_constants.COLOR_OKGREEN,"Transmitting"))
-for el in message:
-    if el == "_" or el == " ":
-        pygame.time.wait(500) # Pause on underline or empty letter
+for el in sr0wx_message:
+    if el == "_" or el == " " or el == "":
+        pygame.time.wait(500) # Pause on underline or empty letter or empty element
     else:
-        if "upper" in dir(el):
-            try:
-                voice_channel = sound_samples[el].play()
-            except:
-                a=1
-
-        elif "upper" not in dir(el):
-            sound = pygame.sndarray.make_sound(el)
-            if module_init.pygame_bug == 1:
-                sound = pygame.sndarray.make_sound(pygame.sndarray.array(sound)[:len(pygame.sndarray.array(sound))/2])
-            voice_channel = sound.play()
+        voice_channel = sound_samples[el].play()
+         
         while voice_channel.get_busy():
             pygame.time.Clock().tick(25)  # This defines how owthen we check if the playback is completed, higher value will reduce delays, but also increase CPU usage
 

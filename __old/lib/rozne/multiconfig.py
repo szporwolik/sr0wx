@@ -5,7 +5,7 @@
 from src.module_init import *
 helloMsg = ["tu_eksperymentalna_automatyczna_stacja_pogodowa",\
     "sq6jnq",]
-modules = ["worldweatheronline"]
+plugins = ["worldweatheronline"]
 
 
 serialPort     = '/dev/ttyS0'

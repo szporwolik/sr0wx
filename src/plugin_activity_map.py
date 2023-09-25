@@ -31,7 +31,7 @@ import urllib.error
 from src import plugin_scaffold
 
 
-class ActivityMap(plugin_scaffold.SR0WXModule):
+class ActivityMap(plugin_scaffold.SR0WXPlugin):
     """This module does not give any data, it just contacts application to mark
 station on the map.
 

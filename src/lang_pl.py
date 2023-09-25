@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-"""Language module for PL - Polish language.
+"""Language module for PL - Polish language,
+   originally created by Michal Sadowski
 """
 
 #
@@ -21,46 +22,13 @@
 
 from six import u
 import datetime
-from functools import wraps
 
 import src.lib.pyliczba as pyliczba
-
-def rmv_pl_chars(string):
-    return ''.join([i if ord(i) < 128 else '_' for i in string]).lower()
-        
-def ra(value):
-    return value\
-        .replace(u("ą"), "a").replace(u("Ą"), "a")\
-        .replace(u("ć"), "c").replace(u("Ć"), "c")\
-        .replace(u("ę"), "e").replace(u("Ę"), "e")\
-        .replace(u("ł"), "l").replace(u("Ł"), "l")\
-        .replace(u("ń"), "n").replace(u("Ń"), "n")\
-        .replace(u("ó"), "o").replace(u("Ó"), "o")\
-        .replace(u("ś"), "s").replace(u("Ś"), "s")\
-        .replace(u("ź"), "z").replace(u("Ź"), "z")\
-        .replace(u("ż"), "z").replace(u("Ż"), "z")\
-        .lower()
-
-def remove_accents(function):
-    """unicodedata.normalize() doesn't work with ł and Ł"""
-    @wraps(function)
-    def wrapper(*args, **kwargs):
-        return ra(function(*args, **kwargs))
-    return wrapper
-
-def _(text):
-    return text
-
-
-class SR0WXLanguage(object):
-    def __init__(self):
-        """Nothing here for now."""
-        pass
-
-
-class PLGoogle(SR0WXLanguage):
-    def __init__(self):
-        pass
+from src import lang_scaffold
+   
+class SR0WXSpecificLanguage(lang_scaffold.SR0WXLanguage):
+    isocode = "pl"
+    
     def read_number(self, value, units=None, isFraction=None):
         """Converts numbers to text."""
         if units is None:
@@ -96,17 +64,17 @@ class PLGoogle(SR0WXLanguage):
         return self.read_number(value, percent)
 
     def read_temperature(self, value):
-        C = [_(u("stopień celsjusza")), _("stopnie celsjusza"), _("stopni celsjusza")]
+        C = [(u("stopień celsjusza")), ("stopnie celsjusza"), ("stopni celsjusza")]
         return read_number(value, C)
 
     def read_speed(self, no, unit='mps'):
         units = {
             'mps': [
-                    _(u("metr na sekundę")), 
-                    _(u("metry na sekundę")),
-                    _(u("metrów na sekundę"))
+                    (u("metr na sekundę")), 
+                    (u("metry na sekundę")),
+                    (u("metrów na sekundę"))
                 ],
-            'kmph': [_(u("kilometr na godzinę")), _(u("kilometry na godzinę")),_(u("kilometrów na godzinę"))]
+            'kmph': [(u("kilometr na godzinę")), (u("kilometry na godzinę")),(u("kilometrów na godzinę"))]
         }
         return read_number(no, units[unit])
 
@@ -248,83 +216,3 @@ class PLGoogle(SR0WXLanguage):
                 except ValueError:
                     raise ValueError("\"%s\" is not a element of callsign", char)
         return ' '.join(retval)
-
-
-# ##########################################
-#
-# module dependant words
-# #############################################
-
-
-# World Weather Online
-
-wwo_weather_codes = {
-    '113': _(ra(u('bezchmurnie'))),                                      # Clear/Sunny
-    '116': _(ra(u('częściowe zachmurzenie'))),                           # Partly Cloudy
-    '119': _(ra(u('pochmurno'))),                                        # Cloudy
-    '122': _(ra(u('zachmurzenie całkowite'))),                           # Overcast
-    '143': _(ra(u('zamglenia'))),                                        # Mist
-    '176': _(ra(u('lokalne przelotne opady deszczu'))),                  # Patchy rain nearby
-    '179': _(ra(u('śnieg'))),                                            # Patchy snow nearby
-    '182': _(ra(u('śnieg z deszczem'))),                                 # Patchy sleet nearby
-    '185': _(ra(u('lokalna przelotna marznąca mżawka'))),                # Patchy freezing drizzle nearby
-    '200': _(ra(u('lokalne burze'))),                                    # Thundery outbreaks in nearby
-    '227': _(ra(u('zamieć śnieżna'))),                                   # Blowing snow
-    '230': _(ra(u('zamieć śnieżna'))),                                   # Blizzard
-    '248': _(ra(u('mgła'))),                                             # Fog
-    '260': _(ra(u('marznąca mgła'))),                                    # Freezing fog
-    '263': _(ra(u('mżawka'))),                                           # Patchy light drizzle
-    '266': _(ra(u('mżawka'))),                                           # Light drizzle
-    '281': _(ra(u('marznąca mżawka'))),                                  # Freezing drizzle
-    '284': _(ra(u('marznąca mżawka'))),                                  # Heavy freezing drizzle
-    '293': _(ra(u('lokalny słaby deszcz'))),                             # Patchy light rain
-    '296': _(ra(u('słaby deszcz'))),                                     # Light rain
-    '299': _(ra(u('przelotne opady deszczu'))),                          # Moderate rain at times
-    '302': _(ra(u('umiarkowane opady deszczu'))),                        # Moderate rain
-    '305': _(ra(u('przelotne ulewy'))),                                  # Heavy rain at times
-    '308': _(ra(u('ulewy'))),                                            # Heavy rain
-    '311': _(ra(u('słabe opady marznącego deszczu'))),                   # Light freezing rain
-    '314': _(ra(u('umiarkowane opady marznącego deszczu'))),             # Moderate or Heavy freezing rain
-    '317': _(ra(u('słabe opady śniegu z deszczem'))),                    # Light sleet
-    '320': _(ra(u('umiarkowane lub ciężkie opady śniegu z deszczem'))),  # Moderate or heavy sleet
-    '323': _(ra(u('słabe opady śniegu'))),                               # Patchy light snow
-    '326': _(ra(u('słabe opady śniegu'))),                               # Light snow
-    '329': _(ra(u('umiarkowane opady śniegu'))),                         # Patchy moderate snow
-    '332': _(ra(u('umiarkowane opady śniegu'))),                         # Moderate snow
-    '335': _(ra(u('opady śniegu'))),                                     # Patchy heavy snow
-    '338': _(ra(u('intensywne_opady_sniegu'))),                          # Heavy snow
-    '350': _(ra(u('grad'))),                                             # Ice pellets
-    '353': _(ra(u('słabe przelotne opady deszczu'))),                    # Light rain shower
-    '356': _(ra(u('przelotne opady deszczu'))),                          # Moderate or heavy rain shower
-    '359': _(ra(u('ulewny deszcz'))),                                    # Torrential rain shower
-    '362': _(ra(u('słabe opady śniegu z deszczem'))),                    # Light sleet showers
-    '365': _(ra(u('umiarkowane opady śniegu z deszczem'))),              # Moderate or heavy sleet showers
-    '368': _(ra(u('słabe opady śniegu'))),                               # Light snow showers
-    '371': _(ra(u('umiarkowane opady śniegu'))),                         # Moderate or heavy snow showers
-    '374': _(ra(u('słabe opady śniegu ziarnistego'))),                   # Light showers of ice pellets
-    '377': _(ra(u('umiarkowane opady śniegu ziarnistego'))),             # Moderate or heavy showers of ice pellets
-    '386': _(ra(u('burza'))),                                            # Patchy light rain in area with thunder
-    '389': _(ra(u('burza'))),                                            # Moderate or heavy rain in area with thunder
-    '392': _(ra(u('burza śnieżna'))),                                    # Patchy light snow in area with thunder
-    '395': _(ra(u('burza śnieżna'))),                                    # Moderate or heavy snow in area with thunder
-}
-
-
-# to be removed from code
-source = 'zrodlo'
-
-pl = PLGoogle()
-
-read_number = pl.read_number
-read_pressure = pl.read_pressure
-read_distance = pl.read_distance
-read_percent = pl.read_percent
-read_temperature = pl.read_temperature
-read_speed = pl.read_speed
-read_degrees = pl.read_degrees
-read_micrograms = pl.read_micrograms
-read_decimal = pl.read_decimal
-read_direction = pl.read_direction
-read_datetime = pl.read_datetime
-read_callsign = pl.read_callsign
-

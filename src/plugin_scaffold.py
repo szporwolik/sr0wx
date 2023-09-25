@@ -19,29 +19,18 @@
 #   limitations under the License.
 #
 
-import warnings
 
-
-class SR0WXModule(object):
+"""Base class for SR0WX plugins."""
+class SR0WXPlugin(object):
     active = False
-    """Base class for SR0WX modules."""
+    message = ""
+    source = ""
+    
     def __init__(self):
         pass
 
-    def getData(self):
-        """Deprecated method. Runs `get_data()`."""
-        msg = "Use if getData() is deprecated, use get_data() instead"
-        warnings.warn(msg)
-        return self.get_data()
-
     def get_data(self):
-        """Returns message to be played back by core of sr0wx.py. Not
-implemented here.
-
-Modules are expected to return a `dict` with the following keys:
-    - `message` -- message text, filled template, etc (currently list of
-    samples)
-    - `need_ctcss` -- hint for core module whether or not to playback CTCSS tone
+        """Prepares plugin object
 """
         msg = "This method should be implemented in child class"
         raise NotImplementedError(msg)

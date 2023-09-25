@@ -17,18 +17,18 @@ def SoundSampleClearCache(logger,path,age):
                 logger.info("Deleting old sound sample: " + filename )
                 os.remove(os.path.join(path, filename))
 
-def SoundSampleGetFilename(text: str,lang):
+def SoundSampleGetFilename(text: str,lang_isocode):
     text = text.lower()
-    return lang+ '_' + re.sub(r'[^A-Za-z0-9]+', '', text) + ".mp3"
+    return lang_isocode + '_' + re.sub(r'[^A-Za-z0-9]+', '', text) + ".mp3"
     
-async def SoundSampleGenerate(logger,text,lang):
+async def SoundSampleGenerate(logger,text,lang_isocode):
     aiogtts=None
     if text == "_":
         return None
     
-    if not os.path.isfile(os.path.join('cache', SoundSampleGetFilename(text,lang))):
-        logger.info("Generating sound sample ["+lang+"]: " + text )
+    if not os.path.isfile(os.path.join('cache', SoundSampleGetFilename(text,lang_isocode))):
+        logger.info("Generating sound sample ["+lang_isocode+"]: " + text )
         aiogtts = aiogTTS()
-        await aiogtts.save(text,os.path.join('cache', SoundSampleGetFilename(text,lang) ), lang)
+        await aiogtts.save(text,os.path.join('cache', SoundSampleGetFilename(text,lang_isocode) ), lang_isocode)
     else:
-        logger.info("Sound sample exist, skipping ["+lang+"]: " + text )
+        logger.info("Sound sample exist, skipping ["+lang_isocode+"]: " + text )
