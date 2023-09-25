@@ -16,10 +16,14 @@ import config
 
 message = ""   # All datas returned by SR0WX modules will be stored in ``message`` variable.
 sources = []
-
 modules = module_init.modules # List of moddules to be executed
-logger = module_logger.setup_logging(module_init) # Initialize root logger
 
+# Create file/folder structure
+module_helpers.CheckOrCreateDir("logs")
+module_helpers.CheckOrCreateDir("cache")
+
+logger = module_logger.setup_logging(module_init) # Initialize root logger
+    
 logger.info(module_logger.text_color(module_constants.COLOR_WARNING,"sr0wx.py has started it's execution"))
 logger.info(module_logger.text_color(module_constants.COLOR_OKBLUE,module_constants.LICENSE))
 

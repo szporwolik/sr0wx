@@ -17,7 +17,7 @@ def setup_logging(config):
     
     logger = logging.getLogger()
     logger.setLevel(min_log_level)
-
+    
     # create logging handlers according to its definitions
     for handler_definition in config.log_handlers:
         handler = handler_definition['class'](**handler_definition['config'])
