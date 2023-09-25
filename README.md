@@ -50,8 +50,11 @@ using and this was assumed in the documentation.
 
 ***Running on 32bit CPUs:*** Ubuntu does not support 32bit images anymore 
 which will be required for some of the installations, in that case we 
-recommend to try Debian installation. Unfortunetly the team had issues 
-running Debian 12 at the CPU without SSE2 instructions.
+recommend to try Debian installation.
+
+***CPU requirements:*** If your are planing to purchase equipment for this
+application, please ensure that your are choosing CPU supporting SSE2
+instructions, this can save you a lots of trouble.
 
 So, if you are planning to use very old 32bit CPU - Ubuntu 16.04 may be 
 worth considering (please keep in mind that that is not supported
