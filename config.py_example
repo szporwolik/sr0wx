@@ -44,4 +44,4 @@ plugin_activity_map = True                                                  # Bo
 plugin_openweather = False                                                  # Bool: Enables weather module basing on openweathermap service if True
 plugin_openweather_api_key = ''                                             # Text: Openweather API key visit https://openweathermap.org/api to get it, all you need is to register (service if FREE)
 
-                          
+plugin_calendar = False                                                      # Bool: Enables calendar module

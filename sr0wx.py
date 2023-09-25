@@ -40,7 +40,7 @@ for module in modules:
         if module_message != "" and module_source != "":
             sources.append(module_data['source'])
     except:
-        logger.exception(module_logger.text_color(module_constants.COLOR_FAIL,"Exception when running " +module))
+        logger.exception(module_logger.text_color(module_constants.COLOR_FAIL,"Exception when running module" ))
 
 # When all the modules finished its' work it's time to ``.split()`` returned
 # data. We split the message by comas, every sentence shall be a seperate

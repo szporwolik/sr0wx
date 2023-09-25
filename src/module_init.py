@@ -59,17 +59,19 @@ if hasattr(config,"plugin_activity_map"):
 # ===============
 
 # ---------------
-# calendar_sq9atk
+# Module - calendar
 # ---------------
-# Calendar module, full list of locations can be find at http://calendar.zoznam.sk
-"""
-from calendar_sq9atk import CalendarSq9atk
-calendarsq9atk = CalendarSq9atk(
-    language=pl_google,
-    service_url="http://calendar.zoznam.sk/sunset-pl.php?city=",
-    city_id=3094802,        # Example -> Kraków
-)
-"""
+
+if hasattr(config,"plugin_calendar"):
+    from src import plugin_calendar
+    plugin_calendar = plugin_calendar.Calendar(
+        language=lang_pl,
+        lat = config.station_latitude,
+        lon = config.station_longitude,
+    )
+    if(config.plugin_calendar):
+        modules+=[plugin_calendar]
+        
 # ---------------
 # Module - openweather_sq9atk
 # ---------------
