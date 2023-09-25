@@ -64,11 +64,9 @@ The following system dependencies are to be met or are recommended:
 ``git``
 
 Also software requires Python 3.11 with the following modules:
-``pygame``
+``pygame numpy aiogTTS six astral serial``
 
-You can install those by ``pip`` or system packages. For most of Ubuntu/
-Debian distros the dependencies can be met by installing:
-``python3-pygame``
+You can install those by ``pip`` package manager or system packages.
 
 ## Cloning the code
 You can download the script using git by running the following command
@@ -90,13 +88,11 @@ to execute the script:
 Check the python version:
 ``python3 --version``
 
-This shall be 3.10 at least to ensure proper execution. The team 
-succedded with Python 3.11 install at Ubuntu 16.04 machine, unfortunetly
+This shall be 3.7.3 at least to ensure proper execution. The team 
+succedded with Python 3.7.3 install at Ubuntu 16.04 machine, unfortunetly
 binary files seems to not be available - compiling the source code was
 required. There is a decent manual available at:
 https://www.osetc.com/en/how-to-install-the-latest-python-3-7-on-ubuntu-16-04-or-18-04.html .
-If going this path please ensure you install openssl from sources as well as it
-seems that Python 3.10 requires OpenSSL lib to be at least 1.1.1.
 
 Runing the script:
 ``python3 ./sr0wx.py``
