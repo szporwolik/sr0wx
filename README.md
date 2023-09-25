@@ -63,7 +63,7 @@ by Canonical anymore).
 The following system dependencies are to be met or are recommended:
 ``git``
 
-Also software requires Python 3.11 with the following modules:
+Also software requires Python 3.7 with the following modules:
 ``pygame numpy aiogTTS six astral serial``
 
 You can install those by ``pip`` package manager or system packages.
