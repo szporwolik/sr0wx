@@ -9,3 +9,4 @@ cache/*
 logs/*
 
 config.py
+.vscode/launch.json

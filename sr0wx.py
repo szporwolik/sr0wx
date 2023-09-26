@@ -55,7 +55,7 @@ for plugin in plugins_list:
         if plugin.message != "" and plugin.source != "":
             plugin_sources.append(plugin.source)
     except:
-        logger.exception(module_logger.text_color(module_constants.COLOR_FAIL,_("Exception when running module")))
+        logger.exception(module_logger.text_color(module_constants.COLOR_FAIL,_("Exception occured when running plugin")))
 
 # When all the modules finished its' work it's time to split the received messages to sentences
 sr0wx_message = [config.message_welcome] + sr0wx_message.split(sep=".") 
