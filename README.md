@@ -52,7 +52,7 @@ The following system dependencies are to be met or are recommended:
 Python version shall be 3.7.3 at least to ensure proper execution. 
 
 Also the software requires Python 3.7 with the following modules:
-``pygame numpy aiogTTS six astral serial``
+``pygame numpy aiogTTS six astral serial inflect``
 
 ## Cloning the code
 You can download the script using git by running the following command
