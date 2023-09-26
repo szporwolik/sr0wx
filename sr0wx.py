@@ -9,9 +9,15 @@ import os
 import pygame
 import asyncio
 import gettext
+import sys
+
+try:
+    import config
+except ImportError:
+    print('\nsr0wx error: config.py configuration file does not exist, please read README.md\n')
+    sys.exit(0)
 
 from src import module_soundsamples, module_init, module_logger, module_constants, module_helpers
-import config
 
 # Set up Gettext
 en_i18n = gettext.translation(module_init.appname, module_init.localedir, fallback=True, languages=[module_init.language.isocode])
