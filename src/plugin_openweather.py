@@ -126,7 +126,7 @@ class OpenWeather(plugin_scaffold.SR0WXPlugin):
     def getWind(self, json):
         msg = ''
         
-        if 'deg' in json and int(json['speed']) > 5:
+        if 'deg' in json and int(json['speed']) >= 5:
             if 0 <= json['deg'] < 23:  msg += 'północny'
             if 23 <= json['deg'] < 67:  msg += 'północno wschodni'
             if 67 <= json['deg'] < 112:  msg += ' wschodni '
@@ -154,8 +154,6 @@ class OpenWeather(plugin_scaffold.SR0WXPlugin):
             if 117 <= int(json['speed']):  msg += 'huragan'
             
         msg += '.'
-        #msg += '' + self.__language.read_speed( int(json['speed']/1000*3600),'kmph')
-        #msg += '.'
         return msg
 
     def get_data(self):
@@ -174,7 +172,7 @@ class OpenWeather(plugin_scaffold.SR0WXPlugin):
 
         self.__logger.info("::: Processing data...")
 
-        message = "".join([ "Aktualna pogoda.", 
+        message = "".join([ _("Aktualna pogoda."), 
                         self.getWeather( weatherJson['weather'] ), \
                         self.getMainConditions( weatherJson['main'] ), \
                         self.getWind( weatherJson['wind'] ), \

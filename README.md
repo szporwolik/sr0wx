@@ -27,51 +27,32 @@ data, sending some of the information about your installation.
 # Installation
 ## System requirements
 Development is made with the assumption that those stations are usually
-running at the low-end machines. Old terminals or even Raspberry PI based 
+running at the low-end machines. Old terminals or Raspberry PI based 
 installations are common. 
 
-Decent performance was presented with the old HP terminal with singe core
-32bit 1GHz CPU and 1GB of the RAM. 1GB shall be more than sufficient to 
-cover storage requirements for most of the installations.
+While this software can run on 32bit machines, we strongly recommend
+to purchase 64bit terminal. Most of the linux distributions do not
+support 32bit anymore and setting up the system may be challenging.
 
-Please do avoid graphical user interface installation to save resources.
+sr0wx.py does not require specific OS, but we strongly recommend to use
+Debian/Ubuntu based Linux distros, as this is what the sr0wx team is 
+using and this was assumed in the documentation. 
 
 Internet connection is required and for most of the installations you 
 will likely need a sound card.
 
 ## Radio hardware
 Most of the installations are basing on either PTT control from serial
-port (which is supported by the software) or VOX solution.
-
-## Operating system
-sr0wx.py does not require specific OS, but we strongly recommend to use
-Debian/Ubuntu based Linux distros, as this is what the sr0wx team is 
-using and this was assumed in the documentation. 
-
-***Running on 32bit CPUs:*** Ubuntu does not support 32bit images anymore 
-which will be required for some of the installations, in that case we 
-recommend to try Debian installation.
-
-***CPU requirements:*** If your are planing to purchase equipment for this
-application, please ensure that your are choosing CPU supporting SSE2
-instructions, this can save you a lots of trouble.
-
-So, if you are planning to use very old 32bit CPU - Ubuntu 16.04 may be 
-worth considering (please keep in mind that that is not supported
-by Canonical anymore).
-
-**This software is not meant to run on Windows machines.**
+port (which is supported by this software) or VOX solution.
 
 ## Environment
 The following system dependencies are to be met or are recommended:
 ``git``
 
-Also software requires Python 3.7 with the following modules:
+Python version shall be 3.7.3 at least to ensure proper execution. 
+
+Also the software requires Python 3.7 with the following modules:
 ``pygame numpy aiogTTS six astral serial``
-
-``pygame`` version ``2.0.0`` is sufficient.
-
-You can install those by ``pip`` package manager or system packages.
 
 ## Cloning the code
 You can download the script using git by running the following command
@@ -81,24 +62,16 @@ You can download the script using git by running the following command
 Rename ``config.py_example`` to ``config.py``. 
 Modify ``config.py`` to suit your needs.
 
-**Please ensure your callsign is transmitted at the begining and
+**Please ensure that your callsign is transmitted at the begining and
 end of each transmission**.
 
 ## System config
 In most of the systems the following permissions are usually needed 
 to execute the script:
-``sudo gpasswd --add ${USER} dialout sudo gpasswd --add ${USER} audio``
+``sudo gpasswd --add ${USER} dialout`` 
+``sudo gpasswd --add ${USER} audio``
 
 ## Runing
-Check the python version:
-``python3 --version``
-
-This shall be 3.7.3 at least to ensure proper execution. The team 
-succedded with Python 3.7.3 install at Ubuntu 16.04 machine, unfortunetly
-binary files seems to not be available - compiling the source code was
-required. There is a decent manual available at:
-https://www.osetc.com/en/how-to-install-the-latest-python-3-7-on-ubuntu-16-04-or-18-04.html .
-
 Runing the script:
 ``python3 ./sr0wx.py``
 
@@ -113,6 +86,9 @@ Configuration is handled within config.py file, you shall not modify anything ou
 
 # Writing a plugin
 Write a plugin and add it into ``src`` direcotory. Add init code into ``src\module_init.py`` and sample config into ``config.py_example``
+
+# Translation
+TBD
 
 # Contributors
 You can find full list of contributors at:

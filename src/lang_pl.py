@@ -65,7 +65,7 @@ class SR0WXSpecificLanguage(lang_scaffold.SR0WXLanguage):
 
     def read_temperature(self, value):
         C = [(u("stopień celsjusza")), ("stopnie celsjusza"), ("stopni celsjusza")]
-        return read_number(value, C)
+        return self.read_number(value, C)
 
     def read_speed(self, no, unit='mps'):
         units = {
