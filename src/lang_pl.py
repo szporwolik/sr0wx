@@ -21,8 +21,6 @@
 #
 
 from six import u
-import datetime
-
 import src.lib.pyliczba as pyliczba
 from src import lang_scaffold
    
@@ -130,89 +128,3 @@ class SR0WXSpecificLanguage(lang_scaffold.SR0WXLanguage):
                          for i, d in enumerate(value, -len(value)+1)])
 
 
-    def read_datetime(self, value, out_fmt, in_fmt=None):
-
-        if type(value) != datetime.datetime and in_fmt is not None:
-            value = datetime.datetime.strptime(value, in_fmt)
-        elif type(value) == datetime.datetime:
-            pass
-        else:
-            raise TypeError('Either datetime must be supplied or both '
-                            'value and in_fmt')
-
-        MONTHS = [u(""),
-                  u("stycznia"), u("lutego"), u("marca"), u("kwietnia"), u("maja"),
-                  u("czerwca"), u("lipca"), u("sierpnia"), u("września"),
-                  u("października"), u("listopada"), u("grudnia"),
-        ]
-
-        DAYS_N0 = [u(""), u(""), u("dwudziestego"), u("trzydziestego"),]
-        DAYS_N = [u(""),
-                  u("pierwszego"), u("drugiego"), u("trzeciego"), u("czwartego"),
-                  u("piątego"), u("szóstego"), u("siódmego"), u("ósmego"),
-                  u("dziewiątego"), u("dziesiątego"), u("jedenastego"),
-                  u("dwunastego"), u("trzynastego"), u("czternastego"),
-                  u("piętnastego"), u("szesnastego"), u("siedemnastego"),
-                  u("osiemnastego"), u("dziewiętnastego"),
-        ]
-        HOURS = [u("zero"), u("pierwsza"), u("druga"), u("trzecia"), u("czwarta"),
-                 u("piąta"), u("szósta"), u("siódma"), u("ósma"), u("dziewiąta"),
-                 u("dziesiąta"), u("jedenasta"), u("dwunasta"), u("trzynasta"),
-                 u("czternasta"), u("piętnasta"), u("szesnasta"),
-                 u("siedemnasta"), u("osiemnasta"), u("dziewiętnasta"),
-                 u("dwudziesta"),
-        ]
-
-
-        _, tm_mon, tm_mday, tm_hour, tm_min, _, _, _, _ = value.timetuple()
-        retval = []
-        for word in out_fmt.split(" "):
-            if word == '%d':  # Day of the month
-                if tm_mday <= 20:
-                    retval.append(DAYS_N[tm_mday])
-                else:
-                    retval.append(DAYS_N0[tm_mday //10])
-                    retval.append(DAYS_N[tm_mday % 10])
-            elif word == '%B':  # Month as locale’s full name
-                retval.append(MONTHS[tm_mon])
-            elif word == '%H':  # Hour (24-hour clock) as a decimal number
-                if tm_hour <= 20:
-                    retval.append(HOURS[tm_hour])
-                elif tm_hour > 20:
-                    retval.append(HOURS[20])
-                    retval.append(HOURS[tm_hour - 20])
-            elif word == '%M':  # Minute as a decimal number
-                if tm_min == 0:
-                    retval.append(u('zero-zero'))
-                else:
-                    retval.append(self.read_number(tm_min))
-            elif word.startswith('%'):
-                raise ValueError("Token %s' is not supported!", word)
-            else:
-                retval.append(word)
-        return ' '.join((w for w in retval if w != ''))
-
-    def read_callsign(self, value):
-        # literowanie polskie wg. "Krótkofalarstwo i radiokomunikacja - poradnik",
-        # Łukasz Komsta SQ8QED, Wydawnictwa Komunikacji i Łączności Warszawa, 2001,
-        # str. 130
-        LETTERS = {
-            'a': u('adam'), 'b': u('barbara'), 'c': u('celina'), 'd': u('dorota'),
-            'e': u('edward'), 'f': u('franciszek'), 'g': u('gustaw'),
-            'h': u('henryk'), 'i': u('irena'), 'j': u('józef'), 'k': u('karol'),
-            'l': u('ludwik'), 'm': u('marek'), 'n': u('natalia'), 'o': u('olga'),
-            'p': u('paweł'), 'q': u('quebec'), 'r': u('roman'), 's': u('stefan'),
-            't': u('tadeusz'), 'u': u('urszula'), 'v': u('violetta'),
-            'w': u('wacław'), 'x': u('xawery'), 'y': u('ypsilon'), 'z': u('zygmunt'),
-            '/': u('łamane'),
-        }
-        retval = []
-        for char in value.lower():
-            try:
-                retval.append(LETTERS[char])
-            except KeyError:
-                try:
-                    retval.append(self.read_number(int(char)))
-                except ValueError:
-                    raise ValueError("\"%s\" is not a element of callsign", char)
-        return ' '.join(retval)

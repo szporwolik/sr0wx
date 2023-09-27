@@ -30,7 +30,7 @@ station_additional_info= "Automatic weather station",                       # Te
 
 # Messages
 message_welcome = 'This is SR0WX'                                           # Text: Welcome message, played at the begining of transmission - ensure to keep your callsign in
-message_goodbye = 'This was Sierra Romeo Zero Whiskey X-Ray'                # Text: Closing message, played at the end of transmission - ensure to keep your callsign in
+message_goodbye = 'This was'                                                # Text: Closing message, played at the end of transmission - no need for the callsign -> it will be send as the last statement of the transmission
 
 # ===============
 # Plugins configuration

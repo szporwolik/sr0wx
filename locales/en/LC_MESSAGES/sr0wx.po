@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 18:18+0200\n"
+"POT-Creation-Date: 2023-09-27 23:14+0200\n"
 "PO-Revision-Date: 2023-09-27 10:02+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,83 +17,412 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.3.2\n"
 
-#: ..\sr0wx.py:39
+#: ..\sr0wx.py:45
 msgid "has started"
 msgstr ""
 
-#: ..\sr0wx.py:45
+#: ..\sr0wx.py:51
 msgid "No internet connection"
 msgstr ""
 
-#: ..\sr0wx.py:50
+#: ..\sr0wx.py:56
 #, python-format
 msgid "Starting plugin: %s"
 msgstr ""
 
-#: ..\sr0wx.py:58
+#: ..\sr0wx.py:64
 msgid "Exception occured when running plugin"
 msgstr ""
 
-#: ..\sr0wx.py:73
+#: ..\sr0wx.py:80
 msgid "Message to be transmitted:"
 msgstr ""
 
-#: ..\sr0wx.py:78
+#: ..\sr0wx.py:85
 msgid "Clearing cache"
 msgstr ""
 
-#: ..\sr0wx.py:85
+#: ..\sr0wx.py:92
 msgid "Preparing sound samples"
 msgstr ""
 
-#: ..\sr0wx.py:91
+#: ..\sr0wx.py:98
 msgid "Preloading sound samples"
 msgstr ""
 
-#: ..\sr0wx.py:97
+#: ..\sr0wx.py:104
 #, python-format
 msgid "Couldn't find %s"
 msgstr ""
 
-#: ..\sr0wx.py:105
+#: ..\sr0wx.py:112
 msgid "PTT control started"
 msgstr ""
 
-#: ..\sr0wx.py:110
+#: ..\sr0wx.py:117
 msgid "DTR/PTT set to ON"
 msgstr ""
 
-#: ..\sr0wx.py:114
+#: ..\sr0wx.py:121
 msgid "RTS/PTT set to ON"
 msgstr ""
 
-#: ..\sr0wx.py:118
+#: ..\sr0wx.py:125
 #, python-format
 msgid "Failed to open serial port %s@%i"
 msgstr ""
 
-#: ..\sr0wx.py:123
+#: ..\sr0wx.py:130
 msgid "Serial port was not configured, PTT control is disabled"
 msgstr ""
 
-#: ..\sr0wx.py:126
+#: ..\sr0wx.py:134
 msgid "Transmitting"
 msgstr ""
 
-#: ..\sr0wx.py:140
+#: ..\sr0wx.py:144
+msgid "Test Mode is enabled - transmitting was skipped"
+msgstr ""
+
+#: ..\sr0wx.py:150
 msgid "Cleaning up and finishig execution"
 msgstr ""
 
-#: ..\sr0wx.py:147
+#: ..\sr0wx.py:157
 msgid "RTS/DTR set to OFF"
 msgstr ""
 
-#: ..\sr0wx.py:149
+#: ..\sr0wx.py:159
 msgid "Couldn't close serial port"
 msgstr ""
 
-#: ..\sr0wx.py:151
+#: ..\sr0wx.py:161
 msgid "sr0wx.py has finished execution"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:54
+msgid "January"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:54
+msgid "February"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:54
+msgid "March"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:54
+msgid "April"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:54
+msgid "May"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:55
+msgid "June"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:55
+msgid "July"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:55
+msgid "August"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:55
+msgid "September"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:56
+msgid "October"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:56 ..\src\lang_scaffold.py:108
+msgid "November"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:56
+msgid "December"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:58
+msgid "twentieth"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:58
+msgid "thirtieth"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:60
+msgid "first"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:60
+msgid "second"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:60
+msgid "third"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:60
+msgid "fourth"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:61
+msgid "fifth"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:61
+msgid "sixth"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:61
+msgid "seventh"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:61
+msgid "eighth"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:62
+msgid "ninth"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:62
+msgid "tenth"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:62
+msgid "eleventh"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:63
+msgid "twelfth"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:63
+msgid "thirteenth"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:63
+msgid "fourteenth"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:64
+msgid "fifteenth"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:64
+msgid "sixteenth"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:64
+msgid "seventeenth"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:65
+msgid "eighteenth"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:65
+msgid "nineteenth"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:67
+msgid "zero"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:67
+msgid "one"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:67
+msgid "two"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:67
+msgid "three"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:67
+msgid "four"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:68
+msgid "five"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:68
+msgid "six"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:68
+msgid "seven"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:68
+msgid "eight"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:68
+msgid "nine"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:69
+msgid "ten"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:69
+msgid "eleven"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:69
+msgid "twelve"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:69
+msgid "thirteen"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:70
+msgid "fourteen"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:70
+msgid "fifteen"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:70
+msgid "sixteen"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:70
+msgid "seventeen"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:71
+msgid "eighteen"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:71
+msgid "nineteen"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:71
+msgid "twenty"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:105
+msgid "Alpha"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:105
+msgid "Bravo"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:105
+msgid "Charlie"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:105
+msgid "Delta"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:106
+msgid "Echo"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:106
+msgid "Foxtrot"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:106
+msgid "Golf"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:107
+msgid "Hotel"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:107
+msgid "India"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:107
+msgid "Juliett"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:107
+msgid "Kilo"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:108
+msgid "Lima"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:108
+msgid "Mike"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:108
+msgid "Oscar"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:109
+msgid "Papa"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:109
+msgid "Quebec"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:109
+msgid "Romeo"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:109
+msgid "Sierra"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:110
+msgid "Tango"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:110
+msgid "Uniform"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:110
+msgid "Victor"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:111
+msgid "Whiskey"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:111
+msgid "X-ray"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:111
+msgid "Yankee"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:111
+msgid "Zulu"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:112
+msgid "Slash"
+msgstr ""
+
+#: ..\src\lang_scaffold.py:122
+#, python-format
+msgid "\"%s\" is not a element of callsign"
 msgstr ""
 
 #: ..\src\plugin_activity_map.py:70 ..\src\plugin_calendar.py:34

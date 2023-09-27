@@ -6,17 +6,11 @@
 import logging, logging.handlers
 import config
 
-
+# Setup proper language class basing on locale from main config file
 if config.lang == "pl":
     from src import lang_pl as lang_module
-elif config.lang == "en":
-    from src import lang_en as lang_module
 else:
     from src import lang_en as lang_module
-
-appname = 'sr0wx'
-localedir = './locales/'
-    
 language = lang_module.SR0WXSpecificLanguage()
     
 # Logging configuration

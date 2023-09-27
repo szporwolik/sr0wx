@@ -12,7 +12,8 @@ COLOR_BOLD = '\033[1m'
 COLOR_UNDERLINE = '\033[4m'
 COLOR_ENDC = '\033[0m'
 
-LICENSE = """                                      
+LICENSE = """          
+Copyright 2023 SR0WX Team                          
 Copyright 2009-2014 Michal Sadowski (sq6jnx at hamradio dot pl)
 
 Licensed under the Apache License, Version 2.0 (the "License");

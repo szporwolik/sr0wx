@@ -63,3 +63,4 @@ class Calendar(plugin_scaffold.SR0WXPlugin):
         
         # TBD: What else can astral provide?
         # TBD: Fix needed for english
+        # TBD: We shall display next sunrise/sunset and not the ones in the past wen ran after sunset

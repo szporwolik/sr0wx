@@ -8,25 +8,31 @@
 import os
 import pygame
 import asyncio
-import gettext
 import sys
 
+# Try to import main config file
 try:
     import config
 except ImportError:
     print('\nsr0wx error: config.py configuration file does not exist, please read README.md\n')
     sys.exit(0)
 
-from src import module_soundsamples, module_init, module_logger, module_constants, module_helpers
+# Load rest of our modules
+from src import module_helpers,module_soundsamples, module_init, module_logger, module_constants, module_helpers
 
-# Set up Gettext
-en_i18n = gettext.translation(module_init.appname, module_init.localedir, languages=[module_init.language.isocode])
-en_i18n.install()
-_ = en_i18n.gettext
-
+# Global variables definition
+helper_test = False                             # Used for development
 plugins_list = module_init.plugins              # List of moddules to be executed
 plugin_sources = []                             # List of data sources
 sr0wx_message = ""                              # All datas returned by SR0WX modules will be stored in ``message`` variable.
+
+# Handle arguments
+n = len(sys.argv)
+for i in range(0, n):
+    if sys.argv[i]=='t':
+        helper_test = True
+
+
 
 # Create file/folder structure
 module_helpers.CheckOrCreateDir("logs")
@@ -68,6 +74,7 @@ if hasattr(module_init, 'read_sources_msg'):
             sr0wx_message += plugin_sources
     
 sr0wx_message += [config.message_goodbye]
+sr0wx_message += [module_init.language.read_callsign(config.station_callsign)]
 
 # Prepare sound samples - generate missing ones
 logger.info(module_logger.text_color(module_constants.COLOR_BLUE,_("Message to be transmitted:")))
@@ -123,15 +130,18 @@ else:
     logger.info(module_logger.text_color(module_constants.COLOR_YELLOW,_("Serial port was not configured, PTT control is disabled")))
     
 # Playback
-logger.info(module_logger.text_color(module_constants.COLOR_BLUE,_("Transmitting")))
-for el in sr0wx_message:
-    if el == "_" or el == " " or el == "":
-        pygame.time.wait(500) # Pause on underline or empty letter or empty element
-    else:
-        voice_channel = sound_samples[el].play()
-         
-        while voice_channel.get_busy():
-            pygame.time.Clock().tick(25)  # This defines how owthen we check if the playback is completed, higher value will reduce delays, but also increase CPU usage
+if not helper_test:
+    logger.info(module_logger.text_color(module_constants.COLOR_BLUE,_("Transmitting")))
+    for el in sr0wx_message:
+        if el == "_" or el == " " or el == "":
+            pygame.time.wait(500) # Pause on underline or empty letter or empty element
+        else:
+            voice_channel = sound_samples[el].play()
+            
+            while voice_channel.get_busy():
+                pygame.time.Clock().tick(25)  # This defines how owthen we check if the playback is completed, higher value will reduce delays, but also increase CPU usage
+else:
+    logger.info(module_logger.text_color(module_constants.COLOR_BLUE,_("Test Mode is enabled - transmitting was skipped")))
 
 # Pause to ensure playback is completed and everything is transmitted before closing transimission
 pygame.time.delay(1000)

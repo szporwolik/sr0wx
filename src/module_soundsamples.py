@@ -27,8 +27,5 @@ async def SoundSampleGenerate(logger,text,lang_isocode):
         return None
     
     if not os.path.isfile(os.path.join('cache', SoundSampleGetFilename(text,lang_isocode))):
-        logger.info("Generating sound sample ["+lang_isocode+"]: " + text )
         aiogtts = aiogTTS()
         await aiogtts.save(text,os.path.join('cache', SoundSampleGetFilename(text,lang_isocode) ), lang_isocode)
-    else:
-        logger.info("Sound sample exist, skipping ["+lang_isocode+"]: " + text )
