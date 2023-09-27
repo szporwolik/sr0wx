@@ -1,0 +1,97 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-27 02:32+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: C:\Dev\sr0wx\sr0wx.py:39
+msgid "has started"
+msgstr ""
+
+#: C:\Dev\sr0wx\sr0wx.py:45
+msgid "No internet connection"
+msgstr ""
+
+#: C:\Dev\sr0wx\sr0wx.py:50
+#, python-format
+msgid "Starting plugin: %s"
+msgstr ""
+
+#: C:\Dev\sr0wx\sr0wx.py:58
+msgid "Exception occured when running plugin"
+msgstr ""
+
+#: C:\Dev\sr0wx\sr0wx.py:73
+msgid "Message to be transmitted"
+msgstr ""
+
+#: C:\Dev\sr0wx\sr0wx.py:78
+msgid "Clearing cache"
+msgstr ""
+
+#: C:\Dev\sr0wx\sr0wx.py:85
+msgid "Preparing sound samples"
+msgstr ""
+
+#: C:\Dev\sr0wx\sr0wx.py:91
+msgid "Preloading sound samples"
+msgstr ""
+
+#: C:\Dev\sr0wx\sr0wx.py:97
+#, python-format
+msgid "Couldn't find %s"
+msgstr ""
+
+#: C:\Dev\sr0wx\sr0wx.py:103
+msgid "PTT control started"
+msgstr ""
+
+#: C:\Dev\sr0wx\sr0wx.py:110
+msgid "DTR/PTT set to ON"
+msgstr ""
+
+#: C:\Dev\sr0wx\sr0wx.py:114
+msgid "RTS/PTT set to ON"
+msgstr ""
+
+#: C:\Dev\sr0wx\sr0wx.py:118
+#, python-format
+msgid "Failed to open serial port %s@%i"
+msgstr ""
+
+#: C:\Dev\sr0wx\sr0wx.py:124
+msgid "Transmitting"
+msgstr ""
+
+#: C:\Dev\sr0wx\sr0wx.py:138
+msgid "Finishing..."
+msgstr ""
+
+#: C:\Dev\sr0wx\sr0wx.py:145
+msgid "RTS/PTT set to OFF\n"
+msgstr ""
+
+#: C:\Dev\sr0wx\sr0wx.py:147
+msgid "Couldn't close serial port"
+msgstr ""
+
+#: C:\Dev\sr0wx\sr0wx.py:149
+msgid "sr0wx.py has finished execution. Bye!"
+msgstr ""
+
+#: C:\Dev\sr0wx\src\plugin_openweather.py:175
+msgid "Aktualna pogoda."
+msgstr ""

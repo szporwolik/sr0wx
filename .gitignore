@@ -10,3 +10,4 @@ logs/*
 
 config.py
 .vscode/launch.json
+tools/temp_files.txt

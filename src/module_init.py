@@ -14,7 +14,7 @@ elif config.lang == "en":
 else:
     from src import lang_en as lang_module
 
-appname = 'base'
+appname = 'sr0wx'
 localedir = './locales'
     
 language = lang_module.SR0WXSpecificLanguage()
