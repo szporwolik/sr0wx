@@ -20,7 +20,7 @@ except ImportError:
 from src import module_soundsamples, module_init, module_logger, module_constants, module_helpers
 
 # Set up Gettext
-en_i18n = gettext.translation(module_init.appname, module_init.localedir, fallback=True, languages=[module_init.language.isocode])
+en_i18n = gettext.translation(module_init.appname, module_init.localedir, fallback=False)
 en_i18n.install()
 _ = en_i18n.gettext
 
@@ -70,7 +70,7 @@ if hasattr(module_init, 'read_sources_msg'):
 sr0wx_message += [config.message_goodbye]
 
 # Prepare sound samples - generate missing ones
-logger.info(module_logger.text_color(module_constants.COLOR_OKGREEN,_("Message to be transmitted")))
+logger.info(module_logger.text_color(module_constants.COLOR_OKGREEN,_("Message to be transmitted:")))
 for el in sr0wx_message:
     logger.info("|"+el+"|")
 
@@ -142,9 +142,9 @@ try:
     if config.serial_port is not None:
         if ser != None:
             ser.close()
-            logger.info(module_logger.text_color(module_constants.COLOR_OKGREEN ,_("RTS/PTT set to OFF\n")))
+            logger.info(module_logger.text_color(module_constants.COLOR_OKGREEN ,_("RTS/DTR set to OFF")))
 except NameError:
     logger.exception(module_logger.text_color(module_constants.COLOR_FAIL , _("Couldn't close serial port" )))
 
-logger.info(module_logger.text_color(module_constants.COLOR_WARNING , _("sr0wx.py has finished execution. Bye!")))
+logger.info(module_logger.text_color(module_constants.COLOR_WARNING , _("sr0wx.py has finished execution")))
 

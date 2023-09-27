@@ -31,3 +31,6 @@ class SR0WXLanguage(object):
     
     def read_temperature(self, value):
         return self.read_number(value, "degree Celsius")
+    
+    def read_datetime(self, value, out_fmt, in_fmt=None):
+        return value.strftime("%m/%d/%Y, %H:%M:%S")

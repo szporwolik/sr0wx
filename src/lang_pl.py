@@ -76,12 +76,12 @@ class SR0WXSpecificLanguage(lang_scaffold.SR0WXLanguage):
                 ],
             'kmph': [(u("kilometr na godzinę")), (u("kilometry na godzinę")),(u("kilometrów na godzinę"))]
         }
-        return read_number(no, units[unit])
+        return self.read_number(no, units[unit])
 
     
     def read_degrees(self, value):
         deg = [u("stopień"), u("stopnie"), u("stopni")]
-        return read_number(value, deg)
+        return self.read_number(value, deg)
 
     def read_micrograms(self, value):
         deg = [
@@ -89,7 +89,7 @@ class SR0WXSpecificLanguage(lang_scaffold.SR0WXLanguage):
                 u("mikrogramy na_metr_szes_cienny"), 
                 u("mikrogramo_w na_metr_szes_cienny"), 
             ]
-        return read_number(value, deg)
+        return self.read_number(value, deg)
 
     def read_decimal(self, value):
         deg1000 = [
@@ -111,11 +111,11 @@ class SR0WXSpecificLanguage(lang_scaffold.SR0WXLanguage):
             ]
 
         if (value % 100 == 0 and value >= 100):
-            return read_number( value / 100, deg10, True)
+            return self.read_number( value / 100, deg10, True)
         elif (value % 10 == 0 and value > 9 ):
-            return read_number( value / 10, deg100, True)
+            return self.read_number( value / 10, deg100, True)
         else:
-            return read_number(value, deg1000, True)
+            return self.read_number(value, deg1000, True)
     
     def read_direction(self, value, short=False):
         directions = {
@@ -185,7 +185,7 @@ class SR0WXSpecificLanguage(lang_scaffold.SR0WXLanguage):
                 if tm_min == 0:
                     retval.append(u('zero-zero'))
                 else:
-                    retval.append(read_number(tm_min))
+                    retval.append(self.read_number(tm_min))
             elif word.startswith('%'):
                 raise ValueError("Token %s' is not supported!", word)
             else:
@@ -212,7 +212,7 @@ class SR0WXSpecificLanguage(lang_scaffold.SR0WXLanguage):
                 retval.append(LETTERS[char])
             except KeyError:
                 try:
-                    retval.append(read_number(int(char)))
+                    retval.append(self.read_number(int(char)))
                 except ValueError:
                     raise ValueError("\"%s\" is not a element of callsign", char)
         return ' '.join(retval)

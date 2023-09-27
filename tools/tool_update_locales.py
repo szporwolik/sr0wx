@@ -41,10 +41,17 @@ with open(path_currentdir + r'\temp_files.txt', 'w') as f:
 # Re-create pot file
 subprocess.call([path_xgettext,"-f",r'temp_files.txt',"-o",r'..\locales\sr0wx.pot'])
 
-# Lang - pl
-subprocess.call([path_msgmerge,"--update",r'..\locales\pl\LC_MESSAGES\sr0wx.po',r'..\locales\sr0wx.pot'])
-subprocess.call([path_msgfmt,"-o",r'..\locales\pl\LC_MESSAGES\sr0wx.mo',r'..\locales\pl\LC_MESSAGES\sr0wx.po'])
-# TBD add additional languages here
+# Lang 
+languages = ['en','pl']
+
+for el in languages:
+    print("Preparing - "+el)
+    path_po = r'..\locales\%s\LC_MESSAGES\sr0wx.po' % el
+    path_mo = r'..\locales\%s\LC_MESSAGES\sr0wx.mo' % el
+    
+    subprocess.call([path_msgmerge,"--update",path_po,r'..\locales\sr0wx.pot'])
+    subprocess.call([path_msgfmt,"-o",path_mo,r'..\locales\pl\LC_MESSAGES\sr0wx.po'])
+    # TBD add additional languages here
 
 # Cleanup
 if os.path.exists(path_currentdir + r'\temp_files.txt'):

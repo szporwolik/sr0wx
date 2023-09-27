@@ -194,7 +194,7 @@ class OpenWeather(plugin_scaffold.SR0WXPlugin):
                         self.getWind( forecastJson['wind'] ), \
                      ])
 
-        self.__logger.info("::: Data prepared\n")
+        self.__logger.info("::: Data prepared")
 
         self.message = message
         self.source = "open weather map"

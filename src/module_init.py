@@ -15,7 +15,7 @@ else:
     from src import lang_en as lang_module
 
 appname = 'sr0wx'
-localedir = './locales'
+localedir = './locales/'
     
 language = lang_module.SR0WXSpecificLanguage()
     

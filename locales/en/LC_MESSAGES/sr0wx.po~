@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-27 10:39+0200\n"
-"PO-Revision-Date: 2023-09-27 10:40+0200\n"
+"PO-Revision-Date: 2023-09-27 10:02+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -19,79 +19,79 @@ msgstr ""
 
 #: ..\sr0wx.py:39
 msgid "has started"
-msgstr "został uruchomiony"
+msgstr ""
 
 #: ..\sr0wx.py:45
 msgid "No internet connection"
-msgstr "Brak połączenia z internetem"
+msgstr ""
 
 #: ..\sr0wx.py:50
 #, python-format
 msgid "Starting plugin: %s"
-msgstr "Uruchamianie wtyczki: %s"
+msgstr ""
 
 #: ..\sr0wx.py:58
 msgid "Exception occured when running plugin"
-msgstr "Wystąpił problem podczas uruchamiania pluginu"
+msgstr ""
 
 #: ..\sr0wx.py:73
 msgid "Message to be transmitted:"
-msgstr "Wiadomość do nadania:"
+msgstr ""
 
 #: ..\sr0wx.py:78
 msgid "Clearing cache"
-msgstr "Czyszczenie pamięci podręcznej"
+msgstr ""
 
 #: ..\sr0wx.py:85
 msgid "Preparing sound samples"
-msgstr "Przygotowanie próbek dźwięku"
+msgstr ""
 
 #: ..\sr0wx.py:91
 msgid "Preloading sound samples"
-msgstr "Wstępne ładowanie próbek dźwięku"
+msgstr ""
 
 #: ..\sr0wx.py:97
 #, python-format
 msgid "Couldn't find %s"
-msgstr "Nie odnaleziono %s"
+msgstr ""
 
 #: ..\sr0wx.py:103
 msgid "PTT control started"
-msgstr "Włączono kontrolę PTT"
+msgstr ""
 
 #: ..\sr0wx.py:110
 msgid "DTR/PTT set to ON"
-msgstr "DTR/PTT ustawiono w stan wysoki"
+msgstr ""
 
 #: ..\sr0wx.py:114
 msgid "RTS/PTT set to ON"
-msgstr "DTR/PTT ustawiono w stan wysoki"
+msgstr ""
 
 #: ..\sr0wx.py:118
 #, python-format
 msgid "Failed to open serial port %s@%i"
-msgstr "Nie udało się otworzyć portu szeregowego %s@%i"
+msgstr ""
 
 #: ..\sr0wx.py:124
 msgid "Transmitting"
-msgstr "Nadawanie"
+msgstr ""
 
 #: ..\sr0wx.py:138
 msgid "Finishing..."
-msgstr "Kończenie..."
+msgstr ""
 
 #: ..\sr0wx.py:145
 msgid "RTS/DTR set to OFF\n"
-msgstr "RTS/DTR ustawiono w stan niski\n"
+msgstr ""
 
 #: ..\sr0wx.py:147
 msgid "Couldn't close serial port"
-msgstr "Nie można zamknąć portu szeregowego"
+msgstr ""
 
 #: ..\sr0wx.py:149
 msgid "sr0wx.py has finished execution"
-msgstr "sr0wx.py zakończył działanie"
+msgstr ""
 
 #: ..\src\plugin_openweather.py:183
 msgid "Prognoza na kolejne cztery godziny."
-msgstr "Forecast for the next four hours."
+msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 09:36+0200\n"
+"POT-Creation-Date: 2023-09-27 10:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,7 @@ msgid "Exception occured when running plugin"
 msgstr ""
 
 #: ..\sr0wx.py:73
-msgid "Message to be transmitted"
+msgid "Message to be transmitted:"
 msgstr ""
 
 #: ..\sr0wx.py:78
@@ -81,7 +81,7 @@ msgid "Finishing..."
 msgstr ""
 
 #: ..\sr0wx.py:145
-msgid "RTS/PTT set to OFF\n"
+msgid "RTS/DTR set to OFF"
 msgstr ""
 
 #: ..\sr0wx.py:147
@@ -89,7 +89,7 @@ msgid "Couldn't close serial port"
 msgstr ""
 
 #: ..\sr0wx.py:149
-msgid "sr0wx.py has finished execution. Bye!"
+msgid "sr0wx.py has finished execution"
 msgstr ""
 
 #: ..\src\plugin_openweather.py:183
