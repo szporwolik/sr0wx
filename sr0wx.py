@@ -32,8 +32,6 @@ for i in range(0, n):
     if sys.argv[i]=='t':
         helper_test = True
 
-
-
 # Create file/folder structure
 module_helpers.CheckOrCreateDir("logs")
 module_helpers.CheckOrCreateDir("cache")
