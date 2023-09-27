@@ -10,6 +10,7 @@ import pygame
 import asyncio
 import gettext
 import sys
+import locale
 
 try:
     import config
@@ -20,7 +21,7 @@ except ImportError:
 from src import module_soundsamples, module_init, module_logger, module_constants, module_helpers
 
 # Set up Gettext
-en_i18n = gettext.translation(module_init.appname, module_init.localedir, fallback=False)
+en_i18n = gettext.translation(module_init.appname, module_init.localedir, languages=[module_init.language.isocode])
 en_i18n.install()
 _ = en_i18n.gettext
 

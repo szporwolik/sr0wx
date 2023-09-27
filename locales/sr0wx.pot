@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 10:48+0200\n"
+"POT-Creation-Date: 2023-09-27 15:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,78 +17,78 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ..\sr0wx.py:39
+#: ..\sr0wx.py:44
 msgid "has started"
 msgstr ""
 
-#: ..\sr0wx.py:45
+#: ..\sr0wx.py:50
 msgid "No internet connection"
 msgstr ""
 
-#: ..\sr0wx.py:50
+#: ..\sr0wx.py:55
 #, python-format
 msgid "Starting plugin: %s"
 msgstr ""
 
-#: ..\sr0wx.py:58
+#: ..\sr0wx.py:63
 msgid "Exception occured when running plugin"
 msgstr ""
 
-#: ..\sr0wx.py:73
+#: ..\sr0wx.py:78
 msgid "Message to be transmitted:"
 msgstr ""
 
-#: ..\sr0wx.py:78
+#: ..\sr0wx.py:83
 msgid "Clearing cache"
 msgstr ""
 
-#: ..\sr0wx.py:85
+#: ..\sr0wx.py:90
 msgid "Preparing sound samples"
 msgstr ""
 
-#: ..\sr0wx.py:91
+#: ..\sr0wx.py:96
 msgid "Preloading sound samples"
 msgstr ""
 
-#: ..\sr0wx.py:97
+#: ..\sr0wx.py:102
 #, python-format
 msgid "Couldn't find %s"
 msgstr ""
 
-#: ..\sr0wx.py:103
+#: ..\sr0wx.py:108
 msgid "PTT control started"
 msgstr ""
 
-#: ..\sr0wx.py:110
+#: ..\sr0wx.py:115
 msgid "DTR/PTT set to ON"
 msgstr ""
 
-#: ..\sr0wx.py:114
+#: ..\sr0wx.py:119
 msgid "RTS/PTT set to ON"
 msgstr ""
 
-#: ..\sr0wx.py:118
+#: ..\sr0wx.py:123
 #, python-format
 msgid "Failed to open serial port %s@%i"
 msgstr ""
 
-#: ..\sr0wx.py:124
+#: ..\sr0wx.py:129
 msgid "Transmitting"
 msgstr ""
 
-#: ..\sr0wx.py:138
+#: ..\sr0wx.py:143
 msgid "Finishing..."
 msgstr ""
 
-#: ..\sr0wx.py:145
+#: ..\sr0wx.py:150
 msgid "RTS/DTR set to OFF"
 msgstr ""
 
-#: ..\sr0wx.py:147
+#: ..\sr0wx.py:152
 msgid "Couldn't close serial port"
 msgstr ""
 
-#: ..\sr0wx.py:149
+#: ..\sr0wx.py:154
 msgid "sr0wx.py has finished execution"
 msgstr ""
 

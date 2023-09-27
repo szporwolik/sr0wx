@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 10:39+0200\n"
+"POT-Creation-Date: 2023-09-27 10:40+0200\n"
 "PO-Revision-Date: 2023-09-27 10:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -81,8 +81,8 @@ msgid "Finishing..."
 msgstr "Kończenie..."
 
 #: ..\sr0wx.py:145
-msgid "RTS/DTR set to OFF\n"
-msgstr "RTS/DTR ustawiono w stan niski\n"
+msgid "RTS/DTR set to OFF"
+msgstr "RTS/DTR ustawiono w stan niski"
 
 #: ..\sr0wx.py:147
 msgid "Couldn't close serial port"

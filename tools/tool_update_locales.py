@@ -50,7 +50,7 @@ for el in languages:
     path_mo = r'..\locales\%s\LC_MESSAGES\sr0wx.mo' % el
     
     subprocess.call([path_msgmerge,"--update",path_po,r'..\locales\sr0wx.pot'])
-    subprocess.call([path_msgfmt,"-o",path_mo,r'..\locales\pl\LC_MESSAGES\sr0wx.po'])
+    subprocess.call([path_msgfmt,"-o",path_mo,path_po])
     # TBD add additional languages here
 
 # Cleanup
