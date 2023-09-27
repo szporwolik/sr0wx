@@ -172,7 +172,7 @@ class OpenWeather(plugin_scaffold.SR0WXPlugin):
 
         self.__logger.info("::: Processing data...")
 
-        message = "".join([ _("Aktualna pogoda."), 
+        message = "".join([ "Aktualna pogoda.", 
                         self.getWeather( weatherJson['weather'] ), \
                         self.getMainConditions( weatherJson['main'] ), \
                         self.getWind( weatherJson['wind'] ), \
@@ -180,7 +180,7 @@ class OpenWeather(plugin_scaffold.SR0WXPlugin):
 
         forecastJson = forecastJsonAll['list'][1]
         message += "".join([ \
-                        "Prognoza na kolejne cztery godziny.", 
+                        _("Prognoza na kolejne cztery godziny."), 
                         self.getWeather( forecastJson['weather'] ), \
                         self.getMainConditions( forecastJson['main'] ), \
                         self.getWind( forecastJson['wind'] ), \
