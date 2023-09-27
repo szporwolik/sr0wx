@@ -1,26 +1,51 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-# Initial version - this will automate localisation
+""" Tool to automatically update locale i18n
+    files.
+    
+    GNU gettext is required to run it, bins for
+    windows can be downloaded from:
+    https://mlocati.github.io/articles/gettext-iconv-windows.html
+    
+    This shall be run from /tools directory
+"""
 
-import subprocess,os
+import subprocess,os,glob,platform
 
-if os.path.exists(r'C:\Dev\sr0wx\tools\files.txt'):
-    os.remove(r'C:\Dev\sr0wx\tools\files.txt')
+# Hack to make in runing on both Linux and windows
+if platform.system() == 'Windows':
+    path_xgettext=r'C:\Program Files\gettext-iconv\bin\xgettext.exe'
+    path_msgmerge=r'C:\Program Files\gettext-iconv\bin\msgmerge.exe'
+    path_msgfmt=r'C:\Program Files\gettext-iconv\bin\msgfmt.exe'
+else:
+    path_xgettext=r'xgettext'
+    path_msgmerge=r'msgmerge'
+    path_msgfmt=r'msgfmt'
+    
+# Get current path
+path_currentdir = os.getcwd()
 
-lines = ['C:\Dev\sr0wx\sr0wx.py']
+# Preparation
+if os.path.exists(path_currentdir + r'\temp_files.txt'):
+    os.remove(path_currentdir + r'\temp_files.txt')
 
-import glob
-lines +=glob.glob("C:\Dev\sr0wx\src\*.py")
-
-with open(r'C:\Dev\sr0wx\tools\temp_files.txt', 'w') as f:
+# Create list of files to merge
+lines = ['..\sr0wx.py']
+lines +=glob.glob("..\src\*.py")
+with open(path_currentdir + r'\temp_files.txt', 'w') as f:
     for line in lines:
         f.write(line)
         f.write('\n')
 
-subprocess.call([r'C:\Program Files\gettext-iconv\bin\xgettext.exe',"-f",r'C:\Dev\sr0wx\tools\temp_files.txt',"-o",r'C:\Dev\sr0wx\locales\sr0wx.pot'])
+# Re-create pot file
+subprocess.call([path_xgettext,"-f",r'temp_files.txt',"-o",r'..\locales\sr0wx.pot'])
 
-# PL
-subprocess.call([r'C:\Program Files\gettext-iconv\bin\msgmerge.exe',"--update",r'C:\Dev\sr0wx\locales\pl\LC_MESSAGES\sr0wx.po',r'C:\Dev\sr0wx\locales\sr0wx.pot'])
-subprocess.call([r'C:\Program Files\gettext-iconv\bin\msgfmt.exe',"-o",r'C:\Dev\sr0wx\locales\pl\LC_MESSAGES\sr0wx.mo',r'C:\Dev\sr0wx\locales\pl\LC_MESSAGES\sr0wx.po'])
+# Lang - pl
+subprocess.call([path_msgmerge,"--update",r'..\locales\pl\LC_MESSAGES\sr0wx.po',r'..\locales\sr0wx.pot'])
+subprocess.call([path_msgfmt,"-o",r'..\locales\pl\LC_MESSAGES\sr0wx.mo',r'..\locales\pl\LC_MESSAGES\sr0wx.po'])
+# TBD add additional languages here
 
-if os.path.exists(r'C:\Dev\sr0wx\tools\temp_files.txt'):
-    os.remove(r'C:\Dev\sr0wx\tools\temp_files.txt')
+# Cleanup
+if os.path.exists(path_currentdir + r'\temp_files.txt'):
+    os.remove(path_currentdir + r'\temp_files.txt')
