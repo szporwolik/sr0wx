@@ -60,7 +60,7 @@ You can download the script using git by running the following command
 
 ## Configuration
 Rename ``config.py_example`` to ``config.py``. 
-Modify ``config.py`` to suit your needs.
+Modify ``config.py``, so it suits your needs.
 
 **Please ensure that your callsign is transmitted at the begining and
 end of each transmission**.
@@ -81,14 +81,11 @@ You can make ensure automatic execution with the crontab:
 
 Please refer to the crontab documentation.
 
-# Transmitting
-Configuration is handled within config.py file, you shall not modify anything out of that file.
-
 # Writing a plugin
 Write a plugin and add it into ``src`` direcotory. Add init code into ``src\module_init.py`` and sample config into ``config.py_example``
 
 # Translation
-TBD
+Translations are handled by the ``gettext`` module, you can support the project by creating translation for your language.
 
 # Contributors
 You can find full list of contributors at:

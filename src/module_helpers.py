@@ -21,3 +21,6 @@ def CheckInternetConnection():
 def CheckOrCreateDir(dir):
     if not os.path.exists(dir):
         os.makedirs(dir) 
+        
+def LogEntryPluginStep(text):
+    return " > %s" %text

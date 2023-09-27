@@ -9,7 +9,7 @@
 # ===============
 
 # Localisation settings
-lang = "pl"                                                                 # Text: Station language, PL (Polish) is the ONLY ONE supported for now
+lang = "pl"                                                                 # Text: Station language, pl (Polish) and en (english) are the only ones supported right now
 
 # Serial port for PTT
 serial_port = '/dev/ttyS0'                                                  # Text: Serial port to be used for PTTY config, set to None to disable

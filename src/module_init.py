@@ -59,6 +59,7 @@ if hasattr(config,"plugin_activity_map"):
         above_ground_level=config.station_ASL,
         station_range=config.station_range,
         additional_info= config.station_additional_info,
+        lang=config.lang
     )
     if(config.plugin_activity_map):
         plugins+=[plugin_activitymap]

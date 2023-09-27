@@ -19,9 +19,8 @@
 #   limitations under the License.
 #
 
-
-"""Base class for SR0WX plugins."""
 class SR0WXPlugin(object):
+    """Base class for SR0WX plugins."""
     active = False
     message = ""
     source = ""
@@ -30,7 +29,7 @@ class SR0WXPlugin(object):
         pass
 
     def get_data(self):
-        """Prepares plugin object
-"""
+        """Prepares plugin object"""
+        
         msg = "This method should be implemented in child class"
         raise NotImplementedError(msg)

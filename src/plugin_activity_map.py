@@ -2,6 +2,8 @@
 
 """Plugin to send station information to the clusters
    this includes http://wx.ostol.pl/.
+   
+   This was oryginally created by Michal Sadowski SQ6JNX
 """
 
 #
@@ -20,7 +22,6 @@
 #   limitations under the License.
 #
 
-import base64
 from base64 import urlsafe_b64encode
 import logging
 import json
@@ -28,7 +29,7 @@ import json
 import urllib.request
 import urllib.error
 
-from src import plugin_scaffold
+from src import plugin_scaffold,module_helpers
 
 
 class ActivityMap(plugin_scaffold.SR0WXPlugin):
@@ -43,10 +44,11 @@ Parameters:
     - `station_range`: station's range in normal conditions, in kilometers
     - `additional_info`: additional information to show on website
     - `service_url`: mapping service url, defaults to SQ9ATK service
+    - `lang`: language used by installation
     """
     def __init__(self, callsign, latitude, longitude,
                  above_sea_level, above_ground_level, station_range,
-                 additional_info="", service_url="", active = False):
+                 additional_info="", service_url="", active = False, lang=""):
         self.__callsign = callsign
         self.__latitude = latitude
         self.__longitude = longitude
@@ -57,13 +59,15 @@ Parameters:
         self.__additional_info = additional_info
         self.__service_url = service_url
         self.active = active
-
+        self.__lang = lang
         self.__logger = logging.getLogger(__name__)
 
     def get_data(self):
-        """This module does NOT return any data! It is here just to say "hello" to
-        map utility!"""
+        """This module does NOT return any data! It is here just to sendd
+        data to map utilities."""
         
+        # Prepare data
+        self.__logger.info(module_helpers.LogEntryPluginStep(_("Preparing data")))
         station_info = {
             "callsign": self.__callsign,
             "lat": self.__latitude,
@@ -73,29 +77,32 @@ Parameters:
             "agl": self.__above_ground_level,
             "range": self.__station_range,
             "info": self.__additional_info,
+            "lang": self.__lang
         }
 
         dump = json.dumps(station_info, separators=(',', ':'))
         data_bytes = dump.encode("utf-8")
         b64data = urlsafe_b64encode(data_bytes)
-
         url = self.__service_url + b64data.decode()
-        self.__logger.info("::: Sending request to " + url)
+        self.__logger.info(module_helpers.LogEntryPluginStep(_("Data was prepared")))
         
+        # Send data
+        self.__logger.info(module_helpers.LogEntryPluginStep(_("Sending data to"))+" " + url)
         try:
             page = urllib.request.urlopen(url)
             response = page.read()
 
             if response == b'OK':
-                self.__logger.info("::: Data was send, confirmation received\n")
+                self.__logger.info(module_helpers.LogEntryPluginStep(_("Data was send, confirmation received")))
             else:
-                log = "Non-OK response from %s, (%s)"
-                self.__logger.exception("Couldn't close serial port")
+                log = _("Non-OK response received from %s, (%s)")
+                self.__logger.exception(_("Could't send data or wrong response from the server"))
                 self.__logger.error(log, self.__service_url, response)
             return dict()
 
         except urllib.error.HTTPError as e:
             print(e)
+            # TBD - Error handling for this plugin
 
 
 

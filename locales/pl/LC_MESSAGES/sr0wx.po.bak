@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 18:08+0200\n"
-"PO-Revision-Date: 2023-09-27 10:02+0200\n"
+"POT-Creation-Date: 2023-09-27 17:47+0200\n"
+"PO-Revision-Date: 2023-09-27 16:25+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: en\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,58 +19,58 @@ msgstr ""
 
 #: ..\sr0wx.py:39
 msgid "has started"
-msgstr ""
+msgstr "został uruchomiony"
 
 #: ..\sr0wx.py:45
 msgid "No internet connection"
-msgstr ""
+msgstr "Brak połączenia z internetem"
 
 #: ..\sr0wx.py:50
 #, python-format
 msgid "Starting plugin: %s"
-msgstr ""
+msgstr "Uruchamianie wtyczki: %s"
 
 #: ..\sr0wx.py:58
 msgid "Exception occured when running plugin"
-msgstr ""
+msgstr "Wystąpił problem podczas uruchamiania pluginu"
 
 #: ..\sr0wx.py:73
 msgid "Message to be transmitted:"
-msgstr ""
+msgstr "Wiadomość do nadania:"
 
 #: ..\sr0wx.py:78
 msgid "Clearing cache"
-msgstr ""
+msgstr "Czyszczenie pamięci podręcznej"
 
 #: ..\sr0wx.py:85
 msgid "Preparing sound samples"
-msgstr ""
+msgstr "Przygotowanie próbek dźwięku"
 
 #: ..\sr0wx.py:91
 msgid "Preloading sound samples"
-msgstr ""
+msgstr "Wstępne ładowanie próbek dźwięku"
 
 #: ..\sr0wx.py:97
 #, python-format
 msgid "Couldn't find %s"
-msgstr ""
+msgstr "Nie odnaleziono %s"
 
 #: ..\sr0wx.py:105
 msgid "PTT control started"
-msgstr ""
+msgstr "Włączono kontrolę PTT"
 
 #: ..\sr0wx.py:110
 msgid "DTR/PTT set to ON"
-msgstr ""
+msgstr "DTR/PTT ustawiono w stan wysoki"
 
 #: ..\sr0wx.py:114
 msgid "RTS/PTT set to ON"
-msgstr ""
+msgstr "DTR/PTT ustawiono w stan wysoki"
 
 #: ..\sr0wx.py:118
 #, python-format
 msgid "Failed to open serial port %s@%i"
-msgstr ""
+msgstr "Nie udało się otworzyć portu szeregowego %s@%i"
 
 #: ..\sr0wx.py:123
 msgid "Serial port was not configured, PTT control is disabled"
@@ -78,81 +78,49 @@ msgstr ""
 
 #: ..\sr0wx.py:126
 msgid "Transmitting"
-msgstr ""
+msgstr "Nadawanie"
 
 #: ..\sr0wx.py:140
+#, fuzzy
 msgid "Cleaning up and finishig execution"
-msgstr ""
+msgstr "sr0wx.py zakończył działanie"
 
 #: ..\sr0wx.py:147
 msgid "RTS/DTR set to OFF"
-msgstr ""
+msgstr "RTS/DTR ustawiono w stan niski"
 
 #: ..\sr0wx.py:149
 msgid "Couldn't close serial port"
-msgstr ""
+msgstr "Nie można zamknąć portu szeregowego"
 
 #: ..\sr0wx.py:151
 msgid "sr0wx.py has finished execution"
-msgstr ""
+msgstr "sr0wx.py zakończył działanie"
 
-#: ..\src\plugin_activity_map.py:70 ..\src\plugin_calendar.py:38
-#: ..\src\plugin_openweather.py:185
+#: ..\src\plugin_activity_map.py:70 ..\src\plugin_openweather.py:185
+#, fuzzy
 msgid "Preparing data"
-msgstr ""
+msgstr "Przygotowanie próbek dźwięku"
 
-#: ..\src\plugin_activity_map.py:87 ..\src\plugin_calendar.py:58
-#: ..\src\plugin_openweather.py:212
+#: ..\src\plugin_activity_map.py:87 ..\src\plugin_openweather.py:212
 msgid "Data was prepared"
 msgstr ""
 
 #: ..\src\plugin_activity_map.py:90
 msgid "Sending data to"
-msgstr ""
+msgstr "Wysyłanie danych do"
 
 #: ..\src\plugin_activity_map.py:96
 msgid "Data was send, confirmation received"
-msgstr ""
+msgstr "Wysłano dane, otrzymano potwierdzenie"
 
 #: ..\src\plugin_activity_map.py:98
 #, python-format
 msgid "Non-OK response received from %s, (%s)"
-msgstr ""
+msgstr "Nieprawdiłowa odpowiedź z %s, (%s)"
 
 #: ..\src\plugin_activity_map.py:99
 msgid "Could't send data or wrong response from the server"
-msgstr ""
-
-#: ..\src\plugin_calendar.py:47
-msgid "new moon"
-msgstr ""
-
-#: ..\src\plugin_calendar.py:48
-msgid "first quarter"
-msgstr ""
-
-#: ..\src\plugin_calendar.py:49
-msgid "full moon"
-msgstr ""
-
-#: ..\src\plugin_calendar.py:50
-msgid "last quarter"
-msgstr ""
-
-#: ..\src\plugin_calendar.py:53
-msgid "Sunrise"
-msgstr ""
-
-#: ..\src\plugin_calendar.py:53 ..\src\plugin_calendar.py:54
-msgid "at"
-msgstr ""
-
-#: ..\src\plugin_calendar.py:54
-msgid "Sunset"
-msgstr ""
-
-#: ..\src\plugin_calendar.py:56
-msgid "Timeline for"
 msgstr ""
 
 #: ..\src\plugin_openweather.py:50
@@ -372,7 +340,7 @@ msgid "overcast clouds"
 msgstr ""
 
 #: ..\src\plugin_openweather.py:121
-msgid "cloud coverage"
+msgid "clound coverage"
 msgstr ""
 
 #: ..\src\plugin_openweather.py:133
@@ -432,7 +400,7 @@ msgid "hurricane"
 msgstr ""
 
 #: ..\src\plugin_openweather.py:156
-msgid "from direction"
+msgid "from"
 msgstr ""
 
 #: ..\src\plugin_openweather.py:157 ..\src\plugin_openweather.py:165
@@ -481,8 +449,18 @@ msgstr ""
 
 #: ..\src\plugin_openweather.py:197
 msgid "Weather forecast for the next four hours."
-msgstr ""
+msgstr "Pogoda na kolejne cztery godziny."
 
 #: ..\src\plugin_openweather.py:206
+#, fuzzy
 msgid "Weather forecast for the next twelve hours."
-msgstr ""
+msgstr "Pogoda na kolejne cztery godziny."
+
+#~ msgid "Finishing..."
+#~ msgstr "Kończenie..."
+
+#~ msgid "Could't send data"
+#~ msgstr "Nie można wysłac danych"
+
+#~ msgid "Prognoza na kolejne cztery godziny."
+#~ msgstr "Forecast for the next four hours."
