@@ -78,21 +78,6 @@ if hasattr(config,"plugin_calendar"):
         plugins+=[plugin_calendar]
         
 # ---------------
-# Module - openweather_sq9atk
-# ---------------
-# Weather module basing on openweathermap service
-# Visit https://openweathermap.org/api to get the API key, all you need is to register
-"""
-from openweather_sq9atk import OpenWeatherSq9atk
-openweathersq9atk = OpenWeatherSq9atk(
-    language = pl_google,
-    api_key = 'ee78911a0fb560b58144230f46e0d4b2',
-    lat = 50,
-    lon = 20,
-    service_url = 'http://api.openweathermap.org/data/2.5/'
-)
-"""
-# ---------------
 # Module - openweather
 # ---------------
 if hasattr(config,"plugin_openweather"):

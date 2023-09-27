@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 23:12+0200\n"
-"PO-Revision-Date: 2023-09-27 23:11+0200\n"
+"POT-Creation-Date: 2023-09-27 23:14+0200\n"
+"PO-Revision-Date: 2023-09-27 23:20+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -140,7 +140,7 @@ msgstr "Września"
 msgid "October"
 msgstr "Października"
 
-#: ..\src\lang_scaffold.py:56
+#: ..\src\lang_scaffold.py:56 ..\src\lang_scaffold.py:108
 msgid "November"
 msgstr "Listopada"
 
@@ -238,206 +238,187 @@ msgstr "zero"
 
 #: ..\src\lang_scaffold.py:67
 msgid "one"
-msgstr ""
+msgstr "pierwsza"
 
 #: ..\src\lang_scaffold.py:67
 msgid "two"
-msgstr ""
+msgstr "druga"
 
 #: ..\src\lang_scaffold.py:67
 msgid "three"
-msgstr ""
+msgstr "trzecia"
 
 #: ..\src\lang_scaffold.py:67
-#, fuzzy
 msgid "four"
-msgstr "czwartego"
+msgstr "czwarta"
 
 #: ..\src\lang_scaffold.py:68
 msgid "five"
-msgstr ""
+msgstr "piąta"
 
 #: ..\src\lang_scaffold.py:68
-#, fuzzy
 msgid "six"
-msgstr "szóstego"
+msgstr "szósta"
 
 #: ..\src\lang_scaffold.py:68
-#, fuzzy
 msgid "seven"
-msgstr "siódmego"
+msgstr "siódma"
 
 #: ..\src\lang_scaffold.py:68
-#, fuzzy
 msgid "eight"
-msgstr "ósmego"
+msgstr "ósma"
 
 #: ..\src\lang_scaffold.py:68
 msgid "nine"
-msgstr ""
+msgstr "dziewiąta"
 
 #: ..\src\lang_scaffold.py:69
-#, fuzzy
 msgid "ten"
-msgstr "dziesiątego"
+msgstr "dziesiąta"
 
 #: ..\src\lang_scaffold.py:69
-#, fuzzy
 msgid "eleven"
-msgstr "jedenastego"
+msgstr "jedenasta"
 
 #: ..\src\lang_scaffold.py:69
-#, fuzzy
 msgid "twelve"
-msgstr "dwunastego"
+msgstr "dwunasta"
 
 #: ..\src\lang_scaffold.py:69
-#, fuzzy
 msgid "thirteen"
-msgstr "trzynastego"
+msgstr "trzynasta"
 
 #: ..\src\lang_scaffold.py:70
-#, fuzzy
 msgid "fourteen"
-msgstr "czternastego"
+msgstr "czternasta"
 
 #: ..\src\lang_scaffold.py:70
-#, fuzzy
 msgid "fifteen"
-msgstr "piętnastego"
+msgstr "piętnasta"
 
 #: ..\src\lang_scaffold.py:70
-#, fuzzy
 msgid "sixteen"
-msgstr "szesnastego"
+msgstr "szesnasta"
 
 #: ..\src\lang_scaffold.py:70
-#, fuzzy
 msgid "seventeen"
-msgstr "siedemnastego"
+msgstr "siedemnasta"
 
 #: ..\src\lang_scaffold.py:71
-#, fuzzy
 msgid "eighteen"
-msgstr "osiemnastego"
+msgstr "osiemnasta"
 
 #: ..\src\lang_scaffold.py:71
-#, fuzzy
 msgid "nineteen"
-msgstr "dziewietnastego"
+msgstr "dziewietnasta"
 
 #: ..\src\lang_scaffold.py:71
-#, fuzzy
 msgid "twenty"
-msgstr "dwudziestego"
+msgstr "dwudziesta"
 
 #: ..\src\lang_scaffold.py:105
-msgid "alpha"
+msgid "Alpha"
 msgstr "Adam"
 
 #: ..\src\lang_scaffold.py:105
-msgid "bravo"
+msgid "Bravo"
 msgstr "Barbara"
 
 #: ..\src\lang_scaffold.py:105
-msgid "charlie"
+msgid "Charlie"
 msgstr "Cezary"
 
 #: ..\src\lang_scaffold.py:105
-msgid "delta"
+msgid "Delta"
 msgstr "Dorota"
 
 #: ..\src\lang_scaffold.py:106
-msgid "echo"
+msgid "Echo"
 msgstr "Ewa"
 
 #: ..\src\lang_scaffold.py:106
-msgid "foxtrot"
+msgid "Foxtrot"
 msgstr "Franciszek"
 
 #: ..\src\lang_scaffold.py:106
-msgid "golf"
+msgid "Golf"
 msgstr "Grażyna"
 
 #: ..\src\lang_scaffold.py:107
-msgid "hotel"
+msgid "Hotel"
 msgstr "Henryk"
 
 #: ..\src\lang_scaffold.py:107
-msgid "india"
+msgid "India"
 msgstr "Irena"
 
 #: ..\src\lang_scaffold.py:107
-msgid "juliett"
+msgid "Juliett"
 msgstr "Jadwiga"
 
 #: ..\src\lang_scaffold.py:107
-msgid "kilo"
+msgid "Kilo"
 msgstr "Karol"
 
 #: ..\src\lang_scaffold.py:108
-msgid "lima"
+msgid "Lima"
 msgstr "Ludwik"
 
 #: ..\src\lang_scaffold.py:108
-msgid "mike"
+msgid "Mike"
 msgstr "Maria"
 
 #: ..\src\lang_scaffold.py:108
-msgid "november"
-msgstr "Natalia"
-
-#: ..\src\lang_scaffold.py:108
-msgid "oscar"
+msgid "Oscar"
 msgstr "Olga"
 
 #: ..\src\lang_scaffold.py:109
-msgid "papa"
+msgid "Papa"
 msgstr "Paweł"
 
 #: ..\src\lang_scaffold.py:109
-msgid "quebec"
+msgid "Quebec"
 msgstr "Quebec"
 
 #: ..\src\lang_scaffold.py:109
-msgid "romeo"
+msgid "Romeo"
 msgstr "Roman"
 
 #: ..\src\lang_scaffold.py:109
-msgid "sierra"
+msgid "Sierra"
 msgstr "Stefan"
 
 #: ..\src\lang_scaffold.py:110
-msgid "tango"
+msgid "Tango"
 msgstr "Tadeusz"
 
 #: ..\src\lang_scaffold.py:110
-msgid "uniform"
+msgid "Uniform"
 msgstr "Urszula"
 
 #: ..\src\lang_scaffold.py:110
-msgid "victor"
+msgid "Victor"
 msgstr "Violetta"
 
 #: ..\src\lang_scaffold.py:111
-msgid "whiskey"
+msgid "Whiskey"
 msgstr "Wanda"
 
 #: ..\src\lang_scaffold.py:111
-msgid "x-ray"
+msgid "X-ray"
 msgstr "Ksawery"
 
 #: ..\src\lang_scaffold.py:111
-msgid "yankee"
+msgid "Yankee"
 msgstr "Ypsylon"
 
 #: ..\src\lang_scaffold.py:111
-msgid "zulu"
-msgstr "Zygmunt"
+msgid "Zulu"
+msgstr ""
 
 #: ..\src\lang_scaffold.py:112
-msgid "slash"
-msgstr "przez"
+msgid "Slash"
+msgstr "Przez"
 
 #: ..\src\lang_scaffold.py:122
 #, python-format
@@ -830,6 +811,30 @@ msgstr "Prognoza pogody na kolejne cztery godziny."
 #: ..\src\plugin_openweather.py:206
 msgid "Weather forecast for the next twelve hours."
 msgstr "Pogoda na kolejne dwanaście godziny."
+
+#~ msgid "echo"
+#~ msgstr "Ewa"
+
+#~ msgid "golf"
+#~ msgstr "Grażyna"
+
+#~ msgid "kilo"
+#~ msgstr "Karol"
+
+#~ msgid "lima"
+#~ msgstr "Ludwik"
+
+#~ msgid "mike"
+#~ msgstr "Maria"
+
+#~ msgid "november"
+#~ msgstr "Natalia"
+
+#~ msgid "papa"
+#~ msgstr "Paweł"
+
+#~ msgid "zulu"
+#~ msgstr "Zygmunt"
 
 #~ msgid "at"
 #~ msgstr "o"

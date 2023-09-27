@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 23:12+0200\n"
+"POT-Creation-Date: 2023-09-27 23:14+0200\n"
 "PO-Revision-Date: 2023-09-27 10:02+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -140,7 +140,7 @@ msgstr ""
 msgid "October"
 msgstr ""
 
-#: ..\src\lang_scaffold.py:56
+#: ..\src\lang_scaffold.py:56 ..\src\lang_scaffold.py:108
 msgid "November"
 msgstr ""
 
@@ -317,111 +317,107 @@ msgid "twenty"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:105
-msgid "alpha"
+msgid "Alpha"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:105
-msgid "bravo"
+msgid "Bravo"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:105
-msgid "charlie"
+msgid "Charlie"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:105
-msgid "delta"
+msgid "Delta"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:106
-msgid "echo"
+msgid "Echo"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:106
-msgid "foxtrot"
+msgid "Foxtrot"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:106
-msgid "golf"
+msgid "Golf"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:107
-msgid "hotel"
+msgid "Hotel"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:107
-msgid "india"
+msgid "India"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:107
-msgid "juliett"
+msgid "Juliett"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:107
-msgid "kilo"
+msgid "Kilo"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:108
-msgid "lima"
+msgid "Lima"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:108
-msgid "mike"
+msgid "Mike"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:108
-msgid "november"
-msgstr ""
-
-#: ..\src\lang_scaffold.py:108
-msgid "oscar"
+msgid "Oscar"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:109
-msgid "papa"
+msgid "Papa"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:109
-msgid "quebec"
+msgid "Quebec"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:109
-msgid "romeo"
+msgid "Romeo"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:109
-msgid "sierra"
+msgid "Sierra"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:110
-msgid "tango"
+msgid "Tango"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:110
-msgid "uniform"
+msgid "Uniform"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:110
-msgid "victor"
+msgid "Victor"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:111
-msgid "whiskey"
+msgid "Whiskey"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:111
-msgid "x-ray"
+msgid "X-ray"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:111
-msgid "yankee"
+msgid "Yankee"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:111
-msgid "zulu"
+msgid "Zulu"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:112
-msgid "slash"
+msgid "Slash"
 msgstr ""
 
 #: ..\src\lang_scaffold.py:122

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 23:14+0200\n"
-"PO-Revision-Date: 2023-09-27 23:20+0200\n"
+"POT-Creation-Date: 2023-09-27 23:43+0200\n"
+"PO-Revision-Date: 2023-09-27 23:44+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -17,410 +17,415 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.3.2\n"
 
-#: ..\sr0wx.py:45
+#: ..\sr0wx.py:43
 msgid "has started"
 msgstr "został uruchomiony"
 
-#: ..\sr0wx.py:51
+#: ..\sr0wx.py:49
 msgid "No internet connection"
 msgstr "Brak połączenia z internetem"
 
-#: ..\sr0wx.py:56
+#: ..\sr0wx.py:54
 #, python-format
 msgid "Starting plugin: %s"
 msgstr "Uruchamianie wtyczki: %s"
 
-#: ..\sr0wx.py:64
+#: ..\sr0wx.py:62
 msgid "Exception occured when running plugin"
 msgstr "Wystąpił problem podczas uruchamiania pluginu"
 
-#: ..\sr0wx.py:80
+#: ..\sr0wx.py:78
 msgid "Message to be transmitted:"
 msgstr "Wiadomość do nadania:"
 
-#: ..\sr0wx.py:85
+#: ..\sr0wx.py:83
 msgid "Clearing cache"
 msgstr "Czyszczenie pamięci podręcznej"
 
-#: ..\sr0wx.py:92
+#: ..\sr0wx.py:90
 msgid "Preparing sound samples"
 msgstr "Przygotowanie próbek dźwięku"
 
-#: ..\sr0wx.py:98
+#: ..\sr0wx.py:96
 msgid "Preloading sound samples"
 msgstr "Wstępne ładowanie próbek dźwięku"
 
-#: ..\sr0wx.py:104
+#: ..\sr0wx.py:102
 #, python-format
 msgid "Couldn't find %s"
 msgstr "Nie odnaleziono %s"
 
-#: ..\sr0wx.py:112
+#: ..\sr0wx.py:110
 msgid "PTT control started"
 msgstr "Włączono kontrolę PTT"
 
-#: ..\sr0wx.py:117
+#: ..\sr0wx.py:115
 msgid "DTR/PTT set to ON"
 msgstr "DTR/PTT ustawiono w stan wysoki"
 
-#: ..\sr0wx.py:121
+#: ..\sr0wx.py:119
 msgid "RTS/PTT set to ON"
 msgstr "RTS/PTT ustawiono w stan wysoki"
 
-#: ..\sr0wx.py:125
+#: ..\sr0wx.py:123
 #, python-format
 msgid "Failed to open serial port %s@%i"
 msgstr "Nie udało się otworzyć portu szeregowego %s@%i"
 
-#: ..\sr0wx.py:130
+#: ..\sr0wx.py:128
 msgid "Serial port was not configured, PTT control is disabled"
 msgstr "Port szeregowy nie został skonfigurowany, kontrola PTT jest wyłączona"
 
-#: ..\sr0wx.py:134
+#: ..\sr0wx.py:132
 msgid "Transmitting"
 msgstr "Nadawanie"
 
-#: ..\sr0wx.py:144
+#: ..\sr0wx.py:142
 msgid "Test Mode is enabled - transmitting was skipped"
 msgstr "Tryb testowy jest włączony - pominięto nadawanie"
 
-#: ..\sr0wx.py:150
+#: ..\sr0wx.py:148
 msgid "Cleaning up and finishig execution"
 msgstr "Czyszczenie oraz finalizacja uruchomienia"
 
-#: ..\sr0wx.py:157
+#: ..\sr0wx.py:155
 msgid "RTS/DTR set to OFF"
 msgstr "RTS/DTR ustawiono w stan niski"
 
-#: ..\sr0wx.py:159
+#: ..\sr0wx.py:157
 msgid "Couldn't close serial port"
 msgstr "Nie można zamknąć portu szeregowego"
 
-#: ..\sr0wx.py:161
+#: ..\sr0wx.py:159
 msgid "sr0wx.py has finished execution"
 msgstr "sr0wx.py zakończył działanie"
 
-#: ..\src\lang_scaffold.py:54
+#: ..\src\lang_scaffold.py:55
 msgid "January"
 msgstr "Stycznia"
 
-#: ..\src\lang_scaffold.py:54
+#: ..\src\lang_scaffold.py:55
 msgid "February"
 msgstr "Lutego"
 
-#: ..\src\lang_scaffold.py:54
+#: ..\src\lang_scaffold.py:55
 msgid "March"
 msgstr "Marca"
 
-#: ..\src\lang_scaffold.py:54
+#: ..\src\lang_scaffold.py:55
 msgid "April"
 msgstr "Kwietnia"
 
-#: ..\src\lang_scaffold.py:54
+#: ..\src\lang_scaffold.py:55
 msgid "May"
 msgstr "Maja"
 
-#: ..\src\lang_scaffold.py:55
+#: ..\src\lang_scaffold.py:56
 msgid "June"
 msgstr "Czerwca"
 
-#: ..\src\lang_scaffold.py:55
+#: ..\src\lang_scaffold.py:56
 msgid "July"
 msgstr "Lipca"
 
-#: ..\src\lang_scaffold.py:55
+#: ..\src\lang_scaffold.py:56
 msgid "August"
 msgstr "Sierpnia"
 
-#: ..\src\lang_scaffold.py:55
+#: ..\src\lang_scaffold.py:56
 msgid "September"
 msgstr "Września"
 
-#: ..\src\lang_scaffold.py:56
+#: ..\src\lang_scaffold.py:57
 msgid "October"
 msgstr "Października"
 
-#: ..\src\lang_scaffold.py:56 ..\src\lang_scaffold.py:108
+#: ..\src\lang_scaffold.py:57 ..\src\lang_scaffold.py:109
 msgid "November"
 msgstr "Listopada"
 
-#: ..\src\lang_scaffold.py:56
+#: ..\src\lang_scaffold.py:57
 msgid "December"
 msgstr "Grudnia"
 
-#: ..\src\lang_scaffold.py:58
+#: ..\src\lang_scaffold.py:59
 msgid "twentieth"
 msgstr "dwudziestego"
 
-#: ..\src\lang_scaffold.py:58
+#: ..\src\lang_scaffold.py:59
 msgid "thirtieth"
 msgstr "trzydziestego"
 
-#: ..\src\lang_scaffold.py:60
+#: ..\src\lang_scaffold.py:61
 msgid "first"
 msgstr "pierwsze"
 
-#: ..\src\lang_scaffold.py:60
+#: ..\src\lang_scaffold.py:61
 msgid "second"
 msgstr "drugiego"
 
-#: ..\src\lang_scaffold.py:60
+#: ..\src\lang_scaffold.py:61
 msgid "third"
 msgstr "trzeciego"
 
-#: ..\src\lang_scaffold.py:60
+#: ..\src\lang_scaffold.py:61
 msgid "fourth"
 msgstr "czwartego"
 
-#: ..\src\lang_scaffold.py:61
+#: ..\src\lang_scaffold.py:62
 msgid "fifth"
 msgstr "piątego"
 
-#: ..\src\lang_scaffold.py:61
+#: ..\src\lang_scaffold.py:62
 msgid "sixth"
 msgstr "szóstego"
 
-#: ..\src\lang_scaffold.py:61
+#: ..\src\lang_scaffold.py:62
 msgid "seventh"
 msgstr "siódmego"
 
-#: ..\src\lang_scaffold.py:61
+#: ..\src\lang_scaffold.py:62
 msgid "eighth"
 msgstr "ósmego"
 
-#: ..\src\lang_scaffold.py:62
+#: ..\src\lang_scaffold.py:63
 msgid "ninth"
 msgstr "dziewiątego"
 
-#: ..\src\lang_scaffold.py:62
+#: ..\src\lang_scaffold.py:63
 msgid "tenth"
 msgstr "dziesiątego"
 
-#: ..\src\lang_scaffold.py:62
+#: ..\src\lang_scaffold.py:63
 msgid "eleventh"
 msgstr "jedenastego"
 
-#: ..\src\lang_scaffold.py:63
+#: ..\src\lang_scaffold.py:64
 msgid "twelfth"
 msgstr "dwunastego"
 
-#: ..\src\lang_scaffold.py:63
+#: ..\src\lang_scaffold.py:64
 msgid "thirteenth"
 msgstr "trzynastego"
 
-#: ..\src\lang_scaffold.py:63
+#: ..\src\lang_scaffold.py:64
 msgid "fourteenth"
 msgstr "czternastego"
 
-#: ..\src\lang_scaffold.py:64
+#: ..\src\lang_scaffold.py:65
 msgid "fifteenth"
 msgstr "piętnastego"
 
-#: ..\src\lang_scaffold.py:64
+#: ..\src\lang_scaffold.py:65
 msgid "sixteenth"
 msgstr "szesnastego"
 
-#: ..\src\lang_scaffold.py:64
+#: ..\src\lang_scaffold.py:65
 msgid "seventeenth"
 msgstr "siedemnastego"
 
-#: ..\src\lang_scaffold.py:65
+#: ..\src\lang_scaffold.py:66
 msgid "eighteenth"
 msgstr "osiemnastego"
 
-#: ..\src\lang_scaffold.py:65
+#: ..\src\lang_scaffold.py:66
 msgid "nineteenth"
 msgstr "dziewietnastego"
 
-#: ..\src\lang_scaffold.py:67
+#: ..\src\lang_scaffold.py:68
 msgid "zero"
 msgstr "zero"
 
-#: ..\src\lang_scaffold.py:67
+#: ..\src\lang_scaffold.py:68
 msgid "one"
 msgstr "pierwsza"
 
-#: ..\src\lang_scaffold.py:67
+#: ..\src\lang_scaffold.py:68
 msgid "two"
 msgstr "druga"
 
-#: ..\src\lang_scaffold.py:67
+#: ..\src\lang_scaffold.py:68
 msgid "three"
 msgstr "trzecia"
 
-#: ..\src\lang_scaffold.py:67
+#: ..\src\lang_scaffold.py:68
 msgid "four"
 msgstr "czwarta"
 
-#: ..\src\lang_scaffold.py:68
+#: ..\src\lang_scaffold.py:69
 msgid "five"
 msgstr "piąta"
 
-#: ..\src\lang_scaffold.py:68
+#: ..\src\lang_scaffold.py:69
 msgid "six"
 msgstr "szósta"
 
-#: ..\src\lang_scaffold.py:68
+#: ..\src\lang_scaffold.py:69
 msgid "seven"
 msgstr "siódma"
 
-#: ..\src\lang_scaffold.py:68
+#: ..\src\lang_scaffold.py:69
 msgid "eight"
 msgstr "ósma"
 
-#: ..\src\lang_scaffold.py:68
+#: ..\src\lang_scaffold.py:69
 msgid "nine"
 msgstr "dziewiąta"
 
-#: ..\src\lang_scaffold.py:69
+#: ..\src\lang_scaffold.py:70
 msgid "ten"
 msgstr "dziesiąta"
 
-#: ..\src\lang_scaffold.py:69
+#: ..\src\lang_scaffold.py:70
 msgid "eleven"
 msgstr "jedenasta"
 
-#: ..\src\lang_scaffold.py:69
+#: ..\src\lang_scaffold.py:70
 msgid "twelve"
 msgstr "dwunasta"
 
-#: ..\src\lang_scaffold.py:69
+#: ..\src\lang_scaffold.py:70
 msgid "thirteen"
 msgstr "trzynasta"
 
-#: ..\src\lang_scaffold.py:70
+#: ..\src\lang_scaffold.py:71
 msgid "fourteen"
 msgstr "czternasta"
 
-#: ..\src\lang_scaffold.py:70
+#: ..\src\lang_scaffold.py:71
 msgid "fifteen"
 msgstr "piętnasta"
 
-#: ..\src\lang_scaffold.py:70
+#: ..\src\lang_scaffold.py:71
 msgid "sixteen"
 msgstr "szesnasta"
 
-#: ..\src\lang_scaffold.py:70
+#: ..\src\lang_scaffold.py:71
 msgid "seventeen"
 msgstr "siedemnasta"
 
-#: ..\src\lang_scaffold.py:71
+#: ..\src\lang_scaffold.py:72
 msgid "eighteen"
 msgstr "osiemnasta"
 
-#: ..\src\lang_scaffold.py:71
+#: ..\src\lang_scaffold.py:72
 msgid "nineteen"
 msgstr "dziewietnasta"
 
-#: ..\src\lang_scaffold.py:71
+#: ..\src\lang_scaffold.py:72
 msgid "twenty"
 msgstr "dwudziesta"
 
-#: ..\src\lang_scaffold.py:105
+#: ..\src\lang_scaffold.py:98
+#, python-format
+msgid "Token %s' is not supported!"
+msgstr "Token %s' nie jest wspierany!"
+
+#: ..\src\lang_scaffold.py:106
 msgid "Alpha"
 msgstr "Adam"
 
-#: ..\src\lang_scaffold.py:105
+#: ..\src\lang_scaffold.py:106
 msgid "Bravo"
 msgstr "Barbara"
 
-#: ..\src\lang_scaffold.py:105
+#: ..\src\lang_scaffold.py:106
 msgid "Charlie"
 msgstr "Cezary"
 
-#: ..\src\lang_scaffold.py:105
+#: ..\src\lang_scaffold.py:106
 msgid "Delta"
 msgstr "Dorota"
 
-#: ..\src\lang_scaffold.py:106
+#: ..\src\lang_scaffold.py:107
 msgid "Echo"
 msgstr "Ewa"
 
-#: ..\src\lang_scaffold.py:106
+#: ..\src\lang_scaffold.py:107
 msgid "Foxtrot"
 msgstr "Franciszek"
 
-#: ..\src\lang_scaffold.py:106
+#: ..\src\lang_scaffold.py:107
 msgid "Golf"
 msgstr "Grażyna"
 
-#: ..\src\lang_scaffold.py:107
+#: ..\src\lang_scaffold.py:108
 msgid "Hotel"
 msgstr "Henryk"
 
-#: ..\src\lang_scaffold.py:107
+#: ..\src\lang_scaffold.py:108
 msgid "India"
 msgstr "Irena"
 
-#: ..\src\lang_scaffold.py:107
+#: ..\src\lang_scaffold.py:108
 msgid "Juliett"
 msgstr "Jadwiga"
 
-#: ..\src\lang_scaffold.py:107
+#: ..\src\lang_scaffold.py:108
 msgid "Kilo"
 msgstr "Karol"
 
-#: ..\src\lang_scaffold.py:108
+#: ..\src\lang_scaffold.py:109
 msgid "Lima"
 msgstr "Ludwik"
 
-#: ..\src\lang_scaffold.py:108
+#: ..\src\lang_scaffold.py:109
 msgid "Mike"
 msgstr "Maria"
 
-#: ..\src\lang_scaffold.py:108
+#: ..\src\lang_scaffold.py:109
 msgid "Oscar"
 msgstr "Olga"
 
-#: ..\src\lang_scaffold.py:109
+#: ..\src\lang_scaffold.py:110
 msgid "Papa"
 msgstr "Paweł"
 
-#: ..\src\lang_scaffold.py:109
+#: ..\src\lang_scaffold.py:110
 msgid "Quebec"
 msgstr "Quebec"
 
-#: ..\src\lang_scaffold.py:109
+#: ..\src\lang_scaffold.py:110
 msgid "Romeo"
 msgstr "Roman"
 
-#: ..\src\lang_scaffold.py:109
+#: ..\src\lang_scaffold.py:110
 msgid "Sierra"
 msgstr "Stefan"
 
-#: ..\src\lang_scaffold.py:110
+#: ..\src\lang_scaffold.py:111
 msgid "Tango"
 msgstr "Tadeusz"
 
-#: ..\src\lang_scaffold.py:110
+#: ..\src\lang_scaffold.py:111
 msgid "Uniform"
 msgstr "Urszula"
 
-#: ..\src\lang_scaffold.py:110
+#: ..\src\lang_scaffold.py:111
 msgid "Victor"
 msgstr "Violetta"
 
-#: ..\src\lang_scaffold.py:111
+#: ..\src\lang_scaffold.py:112
 msgid "Whiskey"
 msgstr "Wanda"
 
-#: ..\src\lang_scaffold.py:111
+#: ..\src\lang_scaffold.py:112
 msgid "X-ray"
 msgstr "Ksawery"
 
-#: ..\src\lang_scaffold.py:111
+#: ..\src\lang_scaffold.py:112
 msgid "Yankee"
 msgstr "Ypsylon"
 
-#: ..\src\lang_scaffold.py:111
-msgid "Zulu"
-msgstr ""
-
 #: ..\src\lang_scaffold.py:112
+msgid "Zulu"
+msgstr "Zygmunt"
+
+#: ..\src\lang_scaffold.py:113
 msgid "Slash"
 msgstr "Przez"
 
-#: ..\src\lang_scaffold.py:122
+#: ..\src\lang_scaffold.py:123
 #, python-format
 msgid "\"%s\" is not a element of callsign"
 msgstr "\"%s\" nie jest częścią znaku wywoławczego"
