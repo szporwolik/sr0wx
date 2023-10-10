@@ -471,7 +471,7 @@ msgstr "pełnia"
 
 #: ..\src\plugin_calendar.py:52
 msgid "last quarter"
-msgstr "ostania kwadra"
+msgstr "ostatnia kwadra"
 
 #: ..\src\plugin_calendar.py:55
 msgid "Sunrise"
