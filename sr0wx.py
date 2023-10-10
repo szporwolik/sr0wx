@@ -106,7 +106,7 @@ for el in sr0wx_message:
 
 # Setting PTT via serial port
 ser = None
-if config.serial_port is not None and config.serial_port is not '':
+if config.serial_port != None and config.serial_port != '':
     logger.info(module_logger.text_color(module_constants.COLOR_BLUE,_("PTT control started")))
     import serial
     try:
@@ -149,7 +149,7 @@ logger.info(module_logger.text_color(module_constants.COLOR_BLUE,_("Cleaning up 
 
 # If we've opened serial it's now time to close it.
 try:
-    if config.serial_port is not None and config.serial_port is not '':
+    if config.serial_port != None and config.serial_port != '':
         if ser != None:
             ser.close()
             logger.info(module_logger.text_color(module_constants.COLOR_GREEN ,_("RTS/DTR set to OFF")))
